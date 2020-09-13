@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, View } from 'react-native';
 import styled from 'styled-components/native';
 import moment from 'moment';
 
 const Event = (props) => {
-    const event = props.event;
+    const [event, setevent] = useState(props.event)
+    
     const date = moment(event.date)
 
     const goToDetails = () => {
@@ -27,8 +28,8 @@ const Event = (props) => {
                     </DateContainer>
                     <ImageBackground
                         source={ event.image }
-                        style={ { flex: 3, height: 150 } }
-                        resizeMode='cover'
+                        style={ { flex: 3 } }
+                        resizeMode='contain'
                     >
                     </ImageBackground>
                 </Body>
@@ -43,7 +44,6 @@ export default Event;
 const Container = styled.TouchableHighlight`
     margin: 10px;
     flex:1;
-    min-height: 120px;
 `;
 
 const Body = styled.View`   
@@ -56,8 +56,8 @@ const Body = styled.View`
 
 const DateContainer = styled.View`   
     backgroundColor:  ${props => props.odd ? "#d43a02" : "#929292"};
-    height: 120px;
     flex: 1;
+    padding-bottom: 10px;
 `;
 
 const Day = styled.Text`   

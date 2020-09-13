@@ -1,30 +1,52 @@
-import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, Text, View, TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
+import ConfirmationModal from '../components/core/modal.component';
 
 const EventDetailScreen = (props) => {
-    const event = props.route.params;
+
+    const [event, setEvent] = useState(props.route.params)
+
+    const [confirmationDialog, setConfirmationDialog] = useState(false)
 
     const enroll = () => {
-        props.navigation.navigate('Enrolled', event)
+        if (event.enrolled)
+            return props.navigation.navigate('Enrolled', event)
+        setConfirmationDialog(true)
     }
 
-    const button = (event.enrolled) ?  <ButtonContent> See QR Code</ButtonContent> :  <ButtonContent> Join me</ButtonContent>
+    const updateEnrollment = () => {
+        event.enrolled = true; 
+        setEvent(event)
+        setConfirmationDialog(false)
+    }
+
+
+    const button = (event.enrolled) ? <ButtonContent> See QR Code</ButtonContent> : <ButtonContent> Join me</ButtonContent>
 
     return (
         <Container>
             <ScrollView>
-                <Image source={ event.image }></Image>
-                <Details>{ event.content }</Details>
+                <View style={ { flexDirection: "column" } }>
+                    <Image source={ event.image } resizeMode="contain"></Image>
+                    <Details>{ event.content }</Details>
+                </View>
             </ScrollView>
             <Button>
-                <Touch 
+                <Touch
                     onPress={ enroll }
                     activeOpacity={ 0.8 }
                     underlayColor="#ac2f02">
-                        {button}
+                    { button }
                 </Touch>
             </Button>
+            <ConfirmationModal
+                visible={ confirmationDialog }
+                cancel={ setConfirmationDialog }
+                confirm={ updateEnrollment }
+                title={ "Join me" }
+                content={ "We really want to have you here! Would you like to join the event? " }
+            ></ConfirmationModal>
         </Container>
     )
 }
@@ -37,8 +59,8 @@ const Container = styled.View`
     flex: 1;
 `;
 
-const Image = styled.ImageBackground`
-    height: 200px;
+const Image = styled.Image`
+    max-height: 150px;
     margin-top: 20px;
     width: 90%;
     align-self: center;
@@ -52,9 +74,8 @@ const Details = styled.Text`
 `;
 
 const Button = styled.View`
-    bottom: 10%;
-    width: 90%;
-    left: 5%;
+   width: 90%;
+   align-self: center;
 `;
 const Touch = styled.TouchableHighlight`
     bottom: 10%;
