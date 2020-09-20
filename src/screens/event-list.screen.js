@@ -23,6 +23,7 @@ export default EventListScreen;
 
 
 const Container = styled.View`
+    margin-top: 10px;
 `;
 
 const eventsData = [

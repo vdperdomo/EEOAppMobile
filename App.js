@@ -5,6 +5,7 @@ import { ImageBackground, View, Text } from 'react-native';
 import EventListScreen from './src/screens/event-list.screen';
 import EventDetailScreen from './src/screens/event-detail.screen';
 import EnrolledScreen from './src/screens/enrolled.screen';
+import SignInScreen from './src/screens/signin.screen';
 
 
 const Stack = createStackNavigator();
@@ -20,7 +21,11 @@ const MyTheme = {
 export default function App() {
   return (
     <NavigationContainer theme={ MyTheme } style={ { backgroundColor: MyTheme.primary } }>
-      <Stack.Navigator initialRouteName="Menu" screenOptions={ { backgroundColor: MyTheme.primary } }>
+      <Stack.Navigator initialRouteName="LogIn" screenOptions={ { backgroundColor: MyTheme.primary } }>
+        <Stack.Screen
+          name="LogIn"
+          component={ SignInScreen }
+        />
         <Stack.Screen
           name="Events"
           component={ EventListScreen }

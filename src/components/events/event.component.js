@@ -8,6 +8,8 @@ const Event = (props) => {
     
     const date = moment(event.date)
 
+    console.log(props.navigation.state)
+
     const goToDetails = () => {
         props.navigation.navigate('EventDetail', event)
     }
@@ -42,7 +44,7 @@ const Event = (props) => {
 export default Event;
 
 const Container = styled.TouchableHighlight`
-    margin: 10px;
+    margin: 5px 10px;
     flex:1;
 `;
 
@@ -55,7 +57,7 @@ const Body = styled.View`
 `;
 
 const DateContainer = styled.View`   
-    backgroundColor:  ${props => props.odd ? "#d43a02" : "#929292"};
+    background-color:  ${props => props.odd ? "#d43a02" : "#929292"};
     flex: 1;
     padding-bottom: 10px;
 `;
