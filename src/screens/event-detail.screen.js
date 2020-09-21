@@ -19,7 +19,6 @@ const EventDetailScreen = (props) => {
         event.enrolled = true; 
         setEvent(event)
         setConfirmationDialog(false)
-        console.log(props.navigation)
         //props.navigation.state.params.onGoBack('123');
     }
 

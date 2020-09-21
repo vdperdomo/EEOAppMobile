@@ -6,6 +6,7 @@ import EventListScreen from './src/screens/event-list.screen';
 import EventDetailScreen from './src/screens/event-detail.screen';
 import EnrolledScreen from './src/screens/enrolled.screen';
 import SignInScreen from './src/screens/signin.screen';
+import SignUpScreen from './src/screens/signup.screen';
 
 
 const Stack = createStackNavigator();
@@ -25,6 +26,16 @@ export default function App() {
         <Stack.Screen
           name="LogIn"
           component={ SignInScreen }
+          options={ {
+            header: () => null
+          }} 
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={ SignUpScreen }
+          options={ {
+            header: () => null
+          }} 
         />
         <Stack.Screen
           name="Events"

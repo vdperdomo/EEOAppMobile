@@ -8,8 +8,6 @@ const Event = (props) => {
     
     const date = moment(event.date)
 
-    console.log(props.navigation.state)
-
     const goToDetails = () => {
         props.navigation.navigate('EventDetail', event)
     }
@@ -59,13 +57,16 @@ const Body = styled.View`
 const DateContainer = styled.View`   
     background-color:  ${props => props.odd ? "#d43a02" : "#929292"};
     flex: 1;
+    height: 118px;
     padding-bottom: 10px;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 const Day = styled.Text`   
     color: white;
     text-align: center;
-    font-size: 80px;
+    font-size: 60px;
     text-shadow: #555 1px 0 10px; 
 `;
 
