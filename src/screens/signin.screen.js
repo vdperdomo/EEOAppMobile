@@ -1,89 +1,86 @@
-import React, { useState } from 'react';
-import { TouchableOpacity } from "react-native";
-import { Form, Item, Label, Input } from 'native-base';
-import styled from 'styled-components';
-import i18n from '../locale/i18n';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import React, { useState } from "react";
+import { TouchableOpacity, StatusBar } from "react-native";
+import { Form, Item, Label, Input } from "native-base";
+import styled from "styled-components";
+import i18n from "../locale/i18n";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
 const SignInScreen = (props) => {
-
-  const [values, setValues] = useState({ username: '', password: '' });
+  const [values, setValues] = useState({ username: "", password: "" });
   const login = () => {
     // props.navigation.navigate('Main');
-    props.navigation.navigate('Events')
+    props.navigation.navigate("Events");
   };
 
   return (
     <Container>
+      <StatusBar
+        barStyle="dark-content"
+        hidden={false}
+        backgroundColor="#dc4c18"
+        translucent={true}
+      />
       <LogoContainer>
-        <Logo source={ require('../../assets/logo.png') }></Logo></LogoContainer>
+        <Logo source={require("../../assets/logo.png")}></Logo>
+      </LogoContainer>
       <Page>
-        <Title>{ i18n.t("login_title") }</Title>
-        <Text >{ i18n.t("login_subtitle") }</Text>
+        <Title>{i18n.t("login_title")}</Title>
+        <Text>{i18n.t("login_subtitle")}</Text>
 
         <Form>
-          <Item floatingLabel style={ { marginLeft: 0 } }>
-            <Label style={ { color: '#dc4c18' } }>{ i18n.t('username') }</Label>
+          <Item floatingLabel style={{ marginLeft: 0 }}>
+            <Label style={{ color: "#dc4c18" }}>{i18n.t("username")}</Label>
             <Input
-              onChangeText={ (val) => setValues({ ...values, username: val }) }
-              value={ values.username } />
-          </Item>
-          <Item floatingLabel style={ { marginLeft: 0 } }>
-            <Label style={ { color: '#dc4c18' } }>{ i18n.t('password') }</Label>
-            <Input
-              onChangeText={ (val) => setValues({ ...values, password: val }) }
-              value={ values.password }
-              secureTextEntry={ true }
+              onChangeText={(val) => setValues({ ...values, username: val })}
+              value={values.username}
             />
           </Item>
-          <Button onPress={ login } style={ { width: '100%' } }>
-            <ButtonText>{ i18n.t('login_button') } </ButtonText>
+          <Item floatingLabel style={{ marginLeft: 0 }}>
+            <Label style={{ color: "#dc4c18" }}>{i18n.t("password")}</Label>
+            <Input
+              onChangeText={(val) => setValues({ ...values, password: val })}
+              value={values.password}
+              secureTextEntry={true}
+            />
+          </Item>
+          <Button onPress={login} style={{ width: "100%" }}>
+            <ButtonText>{i18n.t("login_button")} </ButtonText>
           </Button>
         </Form>
-        <SocialText>{ i18n.t('social_profile') }</SocialText>
+        <SocialText>{i18n.t("social_profile")}</SocialText>
         <Social>
-
-          <Button onPress={ login } style={ { backgroundColor: '#d0021b' } }>
-            <FontAwesomeIcon
-              icon={ faEnvelope }
-              color={ 'white' }
-              size={ 20 }
-            />
+          <Button onPress={login} style={{ backgroundColor: "#d0021b" }}>
+            <FontAwesomeIcon icon={faEnvelope} color={"white"} size={20} />
             <ButtonContainer>
-              <ButtonText>{ i18n.t('google_button') }</ButtonText>
+              <ButtonText>{i18n.t("google_button")}</ButtonText>
             </ButtonContainer>
           </Button>
-          <Button onPress={ login } style={ { backgroundColor: '#3b5998' } }>
-            <FontAwesomeIcon
-              icon={ faFacebookF }
-              color={ 'white' }
-              size={ 20 }
-            />
+          <Button onPress={login} style={{ backgroundColor: "#3b5998" }}>
+            <FontAwesomeIcon icon={faFacebookF} color={"white"} size={20} />
             <ButtonContainer>
-              <ButtonText>{ i18n.t('facebook_button') }</ButtonText>
+              <ButtonText>{i18n.t("facebook_button")}</ButtonText>
             </ButtonContainer>
           </Button>
         </Social>
         <Links>
           <TouchableOpacity>
-            <Text>{ i18n.t("recovert_password") }</Text>
+            <Text>{i18n.t("recovert_password")}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')}>
-            <Text style={ { color: '#dc4c18' } }>{ i18n.t("new_account") }</Text>
+          <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
+            <Text style={{ color: "#dc4c18" }}>{i18n.t("new_account")}</Text>
           </TouchableOpacity>
         </Links>
       </Page>
     </Container>
   );
-}
+};
 
 export default SignInScreen;
 
-
-
-const Container = styled.View` 
+const Container = styled.View`
+  margin-top: 35px;
   height: 100%;
   width: 100%;
   flex-direction: column;
@@ -94,12 +91,12 @@ const Container = styled.View`
 const LogoContainer = styled.View`
   flex: 2;
   justify-content: center;
-`
+`;
 
 const Logo = styled.Image`
   height: 80px;
   width: 110px;
-`
+`;
 
 const Page = styled.View`
   padding: 0 50px;
@@ -124,7 +121,6 @@ const SocialText = styled(Text)`
   text-align: center;
   margin-top: 20px;
 `;
-
 
 const Button = styled.TouchableOpacity`
   border-radius: 5px;
@@ -160,4 +156,3 @@ const Links = styled.View`
   margin-top: 60px;
   height: 20px;
 `;
-
