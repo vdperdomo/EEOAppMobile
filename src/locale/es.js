@@ -15,10 +15,17 @@ export const es = {
   social_profile: "o usa tus cuentas sociales",
   username: "Email",
   password: "Contraseña",
-  recovert_password: "Recuperar Contraseña",
+  recover_password: "Recuperar Contraseña",
   new_account: "Crear Cuenta",
   payments_title: "Pagos",
   payments_subtitle: "Mis Pagos",
   payment_add: "Nuevo Pago",
   payment_view_title: "Mi Pago",
+  go_back: "Volver",
+  drawer_login: "Ingresar",
+  drawer_signup: "Registrarse",
+  drawer_events: "Eventos",
 };
+
+
+

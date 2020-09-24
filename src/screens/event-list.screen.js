@@ -32,7 +32,7 @@ const Container = styled.View`
          ver si se puede reemplazar el 35 fijo por algo mas relativo
   flexDirection: 'row';
   justifyContent: 'space-between';
-  alignItems: 'center';
+  align-items: 'center';
   padding: 30;
   margin: 2;
   borderColor: '#2a4944';

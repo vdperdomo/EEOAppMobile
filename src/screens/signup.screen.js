@@ -21,29 +21,18 @@ const SignUpScreen = (props) => {
 
   return (
     <Container>
-      <StatusBar
-        barStyle="dark-content"
-        hidden={false}
-        backgroundColor="#dc4c18"
-        translucent={true}
-      />
+      <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#dc4c18" translucent={true} />
       <Page>
         <Title>{i18n.t("signup_title")}</Title>
 
         <Form>
           <Item floatingLabel style={{ marginLeft: 0 }}>
             <Label style={{ color: "#dc4c18" }}>{i18n.t("username")}</Label>
-            <Input
-              onChangeText={(val) => setValues({ ...values, username: val })}
-              value={values.username}
-            />
+            <Input onChangeText={(val) => setValues({ ...values, username: val })} value={values.username} />
           </Item>
           <Item floatingLabel style={{ marginLeft: 0 }}>
             <Label style={{ color: "#dc4c18" }}>{i18n.t("password")}</Label>
-            <Input
-              onChangeText={(val) => setValues({ ...values, password: val })}
-              value={values.password}
-            />
+            <Input onChangeText={(val) => setValues({ ...values, password: val })} value={values.password} />
           </Item>
 
           <LinksTS>
@@ -55,18 +44,19 @@ const SignUpScreen = (props) => {
               color="#dc4c18"
               style={{ marginRight: 25, borderRadius: 5 }}
             />
-            <TouchableOpacity style={{ flexDirection: "row" }}>
               <TextContainerTS style={{ flexShrink: 1 }}>
+
                 <Text>{i18n.t("signup_terms")} </Text>
-                <Text style={{ color: "#dc4c18" }}>
-                  {i18n.t("signup_terms_link")}
-                </Text>
+                <Links>
+                  <TouchableOpacity onPress={() => props.navigation.navigate("Terms")}>
+                    <Text style={{ paddingLeft: 10, color: "#dc4c18" }}>{i18n.t("signup_terms_link")}</Text>
+                  </TouchableOpacity>
+                </Links>
+
                 <Text> {i18n.t("signup_terms_and")} </Text>
-                <Text style={{ color: "#dc4c18" }}>
-                  {i18n.t("signup_privacy_policy")}
-                </Text>
+                <Text style={{ color: "#dc4c18" }}>{i18n.t("signup_privacy_policy")}</Text>
+
               </TextContainerTS>
-            </TouchableOpacity>
           </LinksTS>
           <Button onPress={createAccount} style={{ width: "100%" }}>
             <ButtonText>{i18n.t("signup_button")} </ButtonText>
@@ -75,9 +65,7 @@ const SignUpScreen = (props) => {
         <Links>
           <Text>{i18n.t("signup_have_account")}</Text>
           <TouchableOpacity onPress={() => props.navigation.navigate("LogIn")}>
-            <Text style={{ paddingLeft: 10, color: "#dc4c18" }}>
-              {i18n.t("signup_login_redirect")}
-            </Text>
+            <Text style={{ paddingLeft: 10, color: "#dc4c18" }}>{i18n.t("signup_login_redirect")}</Text>
           </TouchableOpacity>
         </Links>
       </Page>

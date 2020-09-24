@@ -66,10 +66,10 @@ const SignInScreen = (props) => {
         </Social>
         <Links>
           <TouchableOpacity>
-            <Text>{i18n.t("recovert_password")}</Text>
+            <SmallText>{i18n.t("recover_password")}</SmallText>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
-            <Text style={{ color: "#dc4c18" }}>{i18n.t("new_account")}</Text>
+            <SmallText style={{ color: "#dc4c18" }}>{i18n.t("new_account")}</SmallText>
           </TouchableOpacity>
         </Links>
       </Page>
@@ -113,6 +113,12 @@ const Title = styled.Text`
 
 const Text = styled.Text`
   font-size: 20px;
+  color: #aaa;
+  font-weight: bold;
+`;
+
+const SmallText = styled.Text`
+  font-size: 16px;
   color: #aaa;
   font-weight: bold;
 `;
