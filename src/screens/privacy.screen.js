@@ -3,11 +3,8 @@ import { TouchableOpacity, View, StatusBar, ScrollView } from "react-native";
 import { Form, Item, Label, Input, CheckBox } from "native-base";
 import styled from "styled-components";
 import i18n from "../locale/i18n";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 
-const TermsScreen = (props) => {
+const PrivacyScreen = (props) => {
   const goBack = () => {
     props.navigation.navigate("SignUp");
   };
@@ -16,31 +13,35 @@ const TermsScreen = (props) => {
     <Container>
       <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#dc4c18" translucent={true} />
       <Page>
-        <Title>{i18n.t("signup_terms_link")}</Title>
-        <ScrollView>
-          <LinksTS>
-            <TouchableOpacity style={{ flexDirection: "row" }}>
-              <TextContainerTS style={{ flexShrink: 1 }}>
-                <Text style={{ color: "#dc4c18" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim id est laborum.
-                </Text>
-              </TextContainerTS>
-            </TouchableOpacity>
-          </LinksTS>
-        </ScrollView>
-        <Button onPress={goBack} style={{ width: "100%" }}>
-          <ButtonText>{i18n.t("go_back")}</ButtonText>
-        </Button>
+        <Title>{i18n.t("signup_privacy_policy")}</Title>
+        <Form>
+          <ScrollView
+            contentContainerStyle={{
+              // flex: 1,
+              justifyContent: "space-between",
+            }}
+          >
+            <TextContainerTXS style={{ flexShrink: 1 }}>
+              <Text style={{ color: "#dc4c18" }}>
+                Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt,
+                explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui
+                dolorem ipsum, quia dolor sit amet consectetur adipisci[ng]velit, sed quia non-numquam [do] eius modi
+                tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem.
+              </Text>
+            </TextContainerTXS>
+          </ScrollView>
+          <Button onPress={goBack} style={{ width: "100%" }}>
+            <ButtonText>{i18n.t("go_back")}</ButtonText>
+          </Button>
+        </Form>
       </Page>
     </Container>
   );
 };
 
-export default TermsScreen;
+export default PrivacyScreen;
 
 const Container = styled.View`
   margin-top: 35px;
@@ -81,8 +82,8 @@ const LinksTS = styled(Links)`
   align-items: flex-start;
 `;
 
-const TextContainerTS = styled.Text`
-  font-size: 20px;
+const TextContainerTXS = styled.Text`
+  font-size: 15px;
   width: 280px;
 `;
 

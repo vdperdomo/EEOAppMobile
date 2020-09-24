@@ -44,19 +44,16 @@ const SignUpScreen = (props) => {
               color="#dc4c18"
               style={{ marginRight: 25, borderRadius: 5 }}
             />
-              <TextContainerTS style={{ flexShrink: 1 }}>
-
-                <Text>{i18n.t("signup_terms")} </Text>
-                <Links>
-                  <TouchableOpacity onPress={() => props.navigation.navigate("Terms")}>
-                    <Text style={{ paddingLeft: 10, color: "#dc4c18" }}>{i18n.t("signup_terms_link")}</Text>
-                  </TouchableOpacity>
-                </Links>
-
-                <Text> {i18n.t("signup_terms_and")} </Text>
-                <Text style={{ color: "#dc4c18" }}>{i18n.t("signup_privacy_policy")}</Text>
-
-              </TextContainerTS>
+            <TextContainerTS style={{ flexShrink: 1 }}>
+              <Text>{i18n.t("signup_terms")} </Text>
+              <Text style={{ color: "#dc4c18" }} onPress={() => props.navigation.navigate("Terms")}>
+                {i18n.t("signup_terms_link")}
+              </Text>
+              <Text> {i18n.t("signup_terms_and")} </Text>
+              <Text style={{ color: "#dc4c18" }} onPress={() => props.navigation.navigate("Privacy")}>
+                {i18n.t("signup_privacy_policy")}
+              </Text>
+            </TextContainerTS>
           </LinksTS>
           <Button onPress={createAccount} style={{ width: "100%" }}>
             <ButtonText>{i18n.t("signup_button")} </ButtonText>

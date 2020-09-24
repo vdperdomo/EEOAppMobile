@@ -8,6 +8,7 @@ import EnrolledScreen from "./src/screens/enrolled.screen";
 import SignInScreen from "./src/screens/signin.screen";
 import SignUpScreen from "./src/screens/signup.screen";
 import TermsScreen from "./src/screens/terms.screen";
+import PrivacyScreen from "./src/screens/privacy.screen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import i18n from "./src/locale/i18n";
 
@@ -18,6 +19,7 @@ const MyTheme = {
   colors: {
     ...DefaultTheme.colors,
     primary: "rgb(0, 45, 85)",
+    backgroundColor: "rgb(0, 0, 0)",
   },
 };
 
@@ -25,7 +27,7 @@ export default function App() {
   const Drawer = createDrawerNavigator();
   return (
     <NavigationContainer theme={MyTheme} style={{ backgroundColor: MyTheme.primary }}>
-      <Drawer.Navigator initialRouteName="LogIn" screenOptions={{ backgroundColor: MyTheme.primary }}>
+      <Drawer.Navigator initialRouteName="LogIn" screenOptions={{ backgroundColor: MyTheme.primary }} drawerType="slide">
         <Drawer.Screen
           name="LogIn"
           component={SignInScreen}
@@ -45,19 +47,14 @@ export default function App() {
         <Drawer.Screen
           name="Events"
           component={EventListScreen}
-          // options={{
-          //   title: "Event",
-          //   header: (props) => (
-          //     <Header {...props} title="Upcoming Events 123" />
-          //   ),
-          // }}
           options={{
             title: i18n.t("drawer_events"),
-            headerTitle: (props) => <LogoTitle {...props} />,
-            headerRight: () => <Button onPress={() => alert("This is a button!")} title="Info" color="#fff" />,
+            header: () => null,
+            // headerTitle: (props) => <LogoTitle {...props} />,
+            // headerRight: () => <Button onPress={() => alert("This is a button!")} title="Info" color="#fff" />,
           }}
         />
-        {/* <Drawer.Screen
+        <Drawer.Screen
           name="EventDetail"
           component={EventDetailScreen}
           options={{
@@ -72,13 +69,21 @@ export default function App() {
             title: "Enrolled",
             header: (props) => <Header {...props} title="QR Code" />,
           }}
-        /> */}
+        />
         <Drawer.Screen
           name="Terms"
           component={TermsScreen}
           options={{
             title: i18n.t("signup_terms_link"),
-            header: (props) => <Header {...props}/>,
+            header: (props) => <Header {...props} />,
+          }}
+        />
+        <Drawer.Screen
+          name="Privacy"
+          component={PrivacyScreen}
+          options={{
+            title: i18n.t("signup_privacy_policy"),
+            header: (props) => <Header {...props} />,
           }}
         />
       </Drawer.Navigator>
