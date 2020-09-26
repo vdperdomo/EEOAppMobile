@@ -25,6 +25,16 @@ export const es = {
   drawer_login: "Ingresar",
   drawer_signup: "Registrarse",
   drawer_events: "Eventos",
+  personal_info_title: "Datos personales",
+  personal_info_name: "Nombre",
+  personal_info_birthdate: "Fecha de Nacimiento",
+  personal_info_role: "Rol",
+  personal_info_is_studying: "Estudias actualmente?",
+  personal_info_school: "Donde",
+  personal_info_is_working: "Trabajas actualmente?",
+  personal_info_company: "Donde",
+  personal_info_notify_events: "Notificarme sobre nuevos eventos",
+  personal_info_notify_job_searches: "Notificarme sobre búsquedas laborales",
 };
 
 

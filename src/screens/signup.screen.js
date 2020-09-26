@@ -15,8 +15,7 @@ const SignUpScreen = (props) => {
   });
 
   const createAccount = () => {
-    // props.navigation.navigate('Main');
-    props.navigation.navigate("Events");
+    props.navigation.navigate("PersonalInfo");
   };
 
   return (
@@ -32,7 +31,7 @@ const SignUpScreen = (props) => {
           </Item>
           <Item floatingLabel style={{ marginLeft: 0 }}>
             <Label style={{ color: "#dc4c18" }}>{i18n.t("password")}</Label>
-            <Input onChangeText={(val) => setValues({ ...values, password: val })} value={values.password} />
+            <Input secureTextEntry={true} onChangeText={(val) => setValues({ ...values, password: val })} value={values.password} />
           </Item>
 
           <LinksTS>

@@ -9,6 +9,7 @@ import SignInScreen from "./src/screens/signin.screen";
 import SignUpScreen from "./src/screens/signup.screen";
 import TermsScreen from "./src/screens/terms.screen";
 import PrivacyScreen from "./src/screens/privacy.screen";
+import PersonalInfoScreen from "./src/screens/personal-info.screen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import i18n from "./src/locale/i18n";
 
@@ -19,14 +20,14 @@ const MyTheme = {
   colors: {
     ...DefaultTheme.colors,
     primary: "rgb(0, 45, 85)",
-    backgroundColor: "rgb(0, 0, 0)",
+    background: "rgb(246, 248, 250)",
   },
 };
 
 export default function App() {
   const Drawer = createDrawerNavigator();
   return (
-    <NavigationContainer theme={MyTheme} style={{ backgroundColor: MyTheme.primary }}>
+    <NavigationContainer theme={MyTheme} style={{ backgroundColor: MyTheme.colors.primary }}>
       <Drawer.Navigator initialRouteName="LogIn" screenOptions={{ backgroundColor: MyTheme.primary }} drawerType="slide">
         <Drawer.Screen
           name="LogIn"
@@ -41,6 +42,14 @@ export default function App() {
           component={SignUpScreen}
           options={{
             title: i18n.t("drawer_signup"),
+            header: () => null,
+          }}
+        />
+        <Drawer.Screen
+          name="PersonalInfo"
+          component={PersonalInfoScreen}
+          options={{
+            title: i18n.t("personal_info_title"),
             header: () => null,
           }}
         />
