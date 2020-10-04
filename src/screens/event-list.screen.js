@@ -11,20 +11,15 @@ const Drawer = createDrawerNavigator();
 
 
 const EventListScreen = (props) => {
-
-
   return (
-
-    <Drawer.Navigator initialRouteName="evscreen">
-      <Drawer.Screen name="evscreen" component={ evscreen } />
+    <Drawer.Navigator initialRouteName="EventList">
+      <Drawer.Screen name="EventList" component={ EventList } />
     </Drawer.Navigator>
-
   );
 };
 
 
-const evscreen = (props) => {
-
+const EventList = (props) => {
   const events = eventsData.map((event, index) => {
     return (
       <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
@@ -72,6 +67,7 @@ const eventsData = [
         Inscripción abierta aquí: https://bit.ly/3eYTHIW Unas horas antes del evento te llegará el link para participar ✔️
         #EndavaTrainings #conocimientocompartido #Development #WorkAtEndava #QuedateEnCasa`,
     enrolled: true,
+    finished: true
   },
   {
     id: 2,
@@ -106,6 +102,7 @@ const eventsData = [
         ¡Sigamos compartiendo conocimientos juntos!
         #EndavaTrainings #IA #AI #WorkAtEndava #EndavansWorkFromHome #compartiendoconocimiento`,
     enrolled: true,
+    online: true
   },
   {
     id: 5,

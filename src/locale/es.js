@@ -35,6 +35,7 @@ export const es = {
   personal_info_company: "Donde",
   personal_info_notify_events: "Notificarme sobre nuevos eventos",
   personal_info_notify_job_searches: "Notificarme sobre búsquedas laborales",
+  online_event_click: "Click here to enter to event",
 };
 
 
