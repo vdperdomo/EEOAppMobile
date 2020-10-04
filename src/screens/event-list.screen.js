@@ -84,7 +84,7 @@ const upcomingEventsData = [
   {
     id: 2,
     image: require("./../../assets/event2.png"),
-    date: "2020-07-16T03:00:00.000Z",
+    date: "2020-10-12T03:00:00.000Z",
     content: `Andrés Nieves, Technical Lead y Developer de #EndavaInMontevideo nos compartirá sus conocimientos sobre "Mutation Testing" el viernes 24/4 a las 15 h ARG/URU - 13 h COL - 14 h VZL.
         Hará una breve intro técnica sobre cómo utilizarlo para mejorar los Unit Tests y también explicará cómo puede Mutation Testing llevar a mejorar el diseño y la calidad de nuestro software.
         Inscribanse en este enlace: https://bit.ly/2yvKrep y antes del evento les haremos llegar el link para participar.
@@ -95,7 +95,7 @@ const upcomingEventsData = [
   {
     id: 3,
     image: require("./../../assets/event3.png"),
-    date: "2020-07-30T03:00:00.000Z",
+    date: "2020-10-20T03:00:00.000Z",
     content: `#Webstories Seguimos con #Microservicios
         La semana pasada tuvimos una introducción al mundo de los microservicios de la mano de Radu Vunvulea. En la sesión de este jueves seguiremos profundizando el tema con los conceptos fundamentales del patrón de diseño CQRS. Veremos cómo aplicarlo en un microservicio utilizando #ASP .NET CORE.
         Y además les acercaremos la librería MediaTR de C#. "Les mostraré cómo usarla para implementar el patrón Mediator que es de mucha ayuda cuando implementamos CQRS", nos adelanta Yanara Valdés Gil, nuestra Senior Developer de #EndavaInMontevideo y speaker del encuentro.
@@ -106,7 +106,7 @@ const upcomingEventsData = [
   {
     id: 4,
     image: require("./../../assets/event4.png"),
-    date: "2020-08-18T03:00:00.000Z",
+    date: "2020-11-05T03:00:00.000Z",
     content: `👉 ¡Todos invitados a la séptima entrega de #WebStories!
         El futuro llegó hace rato y es por eso que Jeremias Giglio, Tester en #EndavaInRosario, nos contará todo acerca de los beneficios de aplicar Inteligencia Artificial en #Testing.
         📅¿Cuándo? Miércoles 20/5, 17 h ARG y URU, 16 h VZLA y 15 h COL.
@@ -120,7 +120,7 @@ const upcomingEventsData = [
   {
     id: 5,
     image: require("./../../assets/event5.png"),
-    date: "2020-09-04T03:00:00.000Z",
+    date: "2020-11-11T03:00:00.000Z",
     content: `#Kubernetes se está convirtiendo en el motor de orquestación de contenedores por defecto. Ahora bien ¿qué es?, ¿cómo funciona? ¿qué deberíamos saber del mismo?
         Jairo Correa, Senior DevOps Consultant de EndavaInBogotá responderá estas y otras preguntas en el próximo #Webstories.
         También junto a él echaremos un vistazo a la definición de contenedores y su debida evolución a través del concepto de namespaces, ¡así podremos entender algo de las abstracciones en Kubernetes!
