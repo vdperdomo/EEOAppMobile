@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TouchableHighlight,
-  StatusBar,
 } from "react-native";
 import styled from "styled-components/native";
 import ConfirmationModal from "../components/core/modal.component";
@@ -34,12 +33,6 @@ const EventDetailScreen = (props) => {
 
   return (
     <Container>
-      <StatusBar
-        barStyle="dark-content"
-        hidden={false}
-        backgroundColor="#dc4c18"
-        translucent={true}
-      />
       <ScrollView>
         <View style={{ flexDirection: "column" }}>
           <Image source={event.image} resizeMode="contain"></Image>

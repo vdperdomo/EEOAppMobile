@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, StatusBar } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Form, Item, Label, Input } from "native-base";
 import styled from "styled-components";
 import i18n from "../locale/i18n";
@@ -16,12 +16,6 @@ const SignInScreen = (props) => {
 
   return (
     <Container>
-      <StatusBar
-        barStyle="dark-content"
-        hidden={false}
-        backgroundColor="#dc4c18"
-        translucent={true}
-      />
       <LogoContainer>
         <Logo source={require("../../assets/logo.png")}></Logo>
       </LogoContainer>

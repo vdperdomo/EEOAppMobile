@@ -1,14 +1,41 @@
 import React from "react";
-import { ScrollView, StatusBar } from "react-native";
+import { ScrollView, View } from "react-native";
 import Event from "../components/events/event.component";
 import styled from "styled-components/native";
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 import PersonalInfoScreen from "./personal-info.screen";
+import { FloatingAction } from "react-native-floating-action";
+
 const Drawer = createDrawerNavigator();
 
-
+const actions = [
+  {
+    text: "Accessibility",
+    // icon: require("./images/ic_accessibility_white.png"),
+    name: "bt_accessibility",
+    position: 2,
+  },
+  {
+    text: "Language",
+    // icon: require("./images/ic_language_white.png"),
+    name: "bt_language",
+    position: 1,
+  },
+  {
+    text: "Location",
+    // icon: require("./images/ic_room_white.png"),
+    name: "bt_room",
+    position: 3,
+  },
+  {
+    text: "Video",
+    // icon: require("./images/ic_videocam_white.png"),
+    name: "bt_videocam",
+    position: 4,
+  },
+];
 
 const EventListScreen = (props) => {
   return (
@@ -21,40 +48,23 @@ const EventListScreen = (props) => {
 
 const EventList = (props) => {
   const events = eventsData.map((event, index) => {
-    return (
-      <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
-    );
+    return <Event key={event.id} event={event} odd={index % 2} {...props}></Event>;
   });
-  
+
   return (
-    <Container>
-      <StatusBar
-        barStyle="light-content"
-        hidden={ false }
-        backgroundColor="#dc4c18"
-        translucent={ true }
+    <View>
+      <ScrollView>{events}</ScrollView>
+      <FloatingAction
+        actions={actions}
+        onPressItem={(name) => {
+          console.log(`selected button: ${name}`);
+        }}
+        position="right"
+        distanceToEdge={{ vertical: -60, horizontal: 10 }}
       />
-      <ScrollView>{ events }</ScrollView>
-    </Container>
-  )
-}
-
-export default EventListScreen;
-
-const Container = styled.View`
-  margin-top: 35px;
-`;
-/* TODO: ver como meter estos estilos (algunos como padding dan error, deben ser distintos)
-         ver si se puede reemplazar el 35 fijo por algo mas relativo
-  flexDirection: 'row';
-  justifyContent: 'space-between';
-  align-items: 'center';
-  padding: 30;
-  margin: 2;
-  borderColor: '#2a4944';
-  borderWidth: 1;
-  backgroundColor: '#d2f7f1'  
-*/
+    </View>
+  );
+};
 
 const eventsData = [
   {
@@ -132,3 +142,5 @@ const eventsData = [
         enrolled: false
     }, */
 ];
+
+export default EventListScreen;

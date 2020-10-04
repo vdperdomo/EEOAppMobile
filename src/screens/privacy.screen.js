@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, View, StatusBar, ScrollView } from "react-native";
+import { TouchableOpacity, View, ScrollView } from "react-native";
 import { Form, Item, Label, Input, CheckBox } from "native-base";
 import styled from "styled-components";
 import i18n from "../locale/i18n";
@@ -11,7 +11,6 @@ const PrivacyScreen = (props) => {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#dc4c18" translucent={true} />
       <Page>
         <Title>{i18n.t("signup_privacy_policy")}</Title>
         <Form>
