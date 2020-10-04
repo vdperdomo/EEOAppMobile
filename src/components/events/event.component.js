@@ -13,6 +13,7 @@ const Event = (props) => {
   };
 
   const enrolledLabel = event.enrolled ? <Enrolled>Enrolled</Enrolled> : null;
+  const onlineLabel = event.online ? <Online>Online</Online> : null;
 
   return (
     <Container onPress={goToDetails} activeOpacity={0.8} underlayColor="#000">
@@ -29,6 +30,7 @@ const Event = (props) => {
           ></ImageBackground>
         </Body>
         {enrolledLabel}
+        {onlineLabel}
       </View>
     </Container>
   );
@@ -81,6 +83,17 @@ const Enrolled = styled.Text`
   right: 5px;
   bottom: 5px;
   background-color: #e64f19;
-  padding: 8px 10px;
+  padding: 3px 10px;
+  border-radius: 5px;
+`;
+
+const Online = styled.Text`
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  right: 90px;
+  bottom: 5px;
+  background-color: #379BD7;
+  padding: 3px 10px;
   border-radius: 5px;
 `;

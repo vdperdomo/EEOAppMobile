@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TouchableHighlight,
-  StatusBar,
 } from "react-native";
 import styled from "styled-components/native";
 import ConfirmationModal from "../components/core/modal.component";
@@ -26,20 +25,12 @@ const EventDetailScreen = (props) => {
     //props.navigation.state.params.onGoBack('123');
   };
 
-  const button = event.enrolled ? (
-    <ButtonContent> See QR Code</ButtonContent>
-  ) : (
-    <ButtonContent> Join me</ButtonContent>
-  );
+  let buttonTitle = "Join me"
+  if(event.enrolled) buttonTitle = (event.online) ? "See Link" : "See QR Code";
+  if(event.finished) buttonTitle =  "See Video";
 
   return (
     <Container>
-      <StatusBar
-        barStyle="dark-content"
-        hidden={false}
-        backgroundColor="#dc4c18"
-        translucent={true}
-      />
       <ScrollView>
         <View style={{ flexDirection: "column" }}>
           <Image source={event.image} resizeMode="contain"></Image>
@@ -48,7 +39,7 @@ const EventDetailScreen = (props) => {
       </ScrollView>
       <Button>
         <Touch onPress={enroll} activeOpacity={0.8} underlayColor="#ac2f02">
-          {button}
+        <ButtonContent>{buttonTitle}</ButtonContent>
         </Touch>
       </Button>
       <ConfirmationModal

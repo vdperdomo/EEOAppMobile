@@ -3,24 +3,44 @@ import { ScrollView, StatusBar } from "react-native";
 import Event from "../components/events/event.component";
 import styled from "styled-components/native";
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import PersonalInfoScreen from "./personal-info.screen";
-const Drawer = createDrawerNavigator();
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+const Tab = createMaterialTopTabNavigator();
 
 
 
 const EventListScreen = (props) => {
   return (
-    <Drawer.Navigator initialRouteName="EventList">
-      <Drawer.Screen name="EventList" component={ EventList } />
-    </Drawer.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen name="Upcoming Events" component={UpcomingEvents} style={{fontSize: 30}} />
+      <Tab.Screen name="Previous Events" component={PreviusEvents} style={{fontSize: 20}} />
+    </Tab.Navigator>
   );
 };
 
 
-const EventList = (props) => {
-  const events = eventsData.map((event, index) => {
+const UpcomingEvents = (props) => {
+  const events = upcomingEventsData.map((event, index) => {
+    return (
+      <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
+    );
+  });
+  
+  return (
+    <Container>
+      <StatusBar
+        barStyle="light-content"
+        hidden={ false }
+        backgroundColor="#dc4c18"
+        translucent={ true }
+      />
+      <ScrollView>{ events }</ScrollView>
+    </Container>
+  )
+}
+
+const PreviusEvents = (props) => {
+  const events = previusEventsData.map((event, index) => {
     return (
       <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
     );
@@ -56,19 +76,8 @@ const Container = styled.View`
   backgroundColor: '#d2f7f1'  
 */
 
-const eventsData = [
-  {
-    id: 1,
-    image: require("./../../assets/event1.png"),
-    date: "2020-04-28T03:00:00.000Z",
-    content: `Queremos invitarte al tercer #WebStories de #EndavaInLatam 😁 ¡Imperdible!
-        Juan Andrés Absi, Technical Lead y Developer de #EndavaInRosario, nos presentará #Leaflet, una librería de #JavaScript, mañana martes 28/4 a las 17 h ARG/URU - 15 h COL - 16 h VZL.
-        En esta introducción práctica veremos la construcción de mapas interactivos utilizando Leaflet que, además de ser Open Source, es simple, liviana, performante y mobile friendly.
-        Inscripción abierta aquí: https://bit.ly/3eYTHIW Unas horas antes del evento te llegará el link para participar ✔️
-        #EndavaTrainings #conocimientocompartido #Development #WorkAtEndava #QuedateEnCasa`,
-    enrolled: true,
-    finished: true
-  },
+const upcomingEventsData = [
+  
   {
     id: 2,
     image: require("./../../assets/event2.png"),
@@ -89,7 +98,7 @@ const eventsData = [
         Y además les acercaremos la librería MediaTR de C#. "Les mostraré cómo usarla para implementar el patrón Mediator que es de mucha ayuda cuando implementamos CQRS", nos adelanta Yanara Valdés Gil, nuestra Senior Developer de #EndavaInMontevideo y speaker del encuentro.
         Como todas las propuestas de este ciclo, esta también es gratis. Reserven su lugar aquí: https://buff.ly/3hBVns0
         #EndavaTrainings #Webinar #Microservices #EndavaTalents`,
-    enrolled: false,
+    enrolled: true,
   },
   {
     id: 4,
@@ -102,7 +111,8 @@ const eventsData = [
         ¡Sigamos compartiendo conocimientos juntos!
         #EndavaTrainings #IA #AI #WorkAtEndava #EndavansWorkFromHome #compartiendoconocimiento`,
     enrolled: true,
-    online: true
+    online: true,
+    linkOnline: 'https://teams.microsoft.com/l/entity/'
   },
   {
     id: 5,
@@ -131,4 +141,21 @@ const eventsData = [
         #EndavaTrainings #ConocimientoCompartido #Microservices #EndavaTalents #EndavaInLatam`,
         enrolled: false
     }, */
+];
+
+
+const previusEventsData = [
+  {
+    id: 1,
+    image: require("./../../assets/event1.png"),
+    date: "2020-04-28T03:00:00.000Z",
+    content: `Queremos invitarte al tercer #WebStories de #EndavaInLatam 😁 ¡Imperdible!
+        Juan Andrés Absi, Technical Lead y Developer de #EndavaInRosario, nos presentará #Leaflet, una librería de #JavaScript, mañana martes 28/4 a las 17 h ARG/URU - 15 h COL - 16 h VZL.
+        En esta introducción práctica veremos la construcción de mapas interactivos utilizando Leaflet que, además de ser Open Source, es simple, liviana, performante y mobile friendly.
+        Inscripción abierta aquí: https://bit.ly/3eYTHIW Unas horas antes del evento te llegará el link para participar ✔️
+        #EndavaTrainings #conocimientocompartido #Development #WorkAtEndava #QuedateEnCasa`,
+    enrolled: true,
+    finished: true,
+    linkVideo: 'https://www.youtube.com/watch?v=Y1tPyEim63A&list=PLjbWsoo02kUEl4sG8NaKbwMkFHQ5f0EwD&index=13'
+  }
 ];

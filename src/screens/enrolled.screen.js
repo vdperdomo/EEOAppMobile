@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
-import { View, Text, Linking } from "react-native";
+import { Text, Linking } from "react-native";
 import i18n from "../locale/i18n";
 import { WebView } from 'react-native-webview';
 
 
 const EnrolledScreen = (props) => {
   const event = props.route.params;
-  //event.online = true;
+
   let eventView = (
     <Container>
       <Detail>Show this QR in the event's registration area</Detail>
@@ -22,7 +22,7 @@ const EnrolledScreen = (props) => {
     eventView = (
       <Container>
         <Text style={ { color: 'blue' } }
-          onPress={ () => Linking.openURL('https://teams.microsoft.com/l/entity/') }>
+          onPress={ () => Linking.openURL(event.linkOnline) }>
           {i18n.t("online_event_click")}
         </Text>
       </Container>
@@ -35,13 +35,13 @@ const EnrolledScreen = (props) => {
         allowsFullscreenVideo
         allowsInlineMediaPlayback
         mediaPlaybackRequiresUserAction
-        source={{ uri: 'https://www.youtube.com/embed/jzD_yyEcp0M' }} 
+        source={{ uri: event.linkVideo }} 
       />
     )
   }
 
   return (
-    <View>{ eventView }</View>
+    <>{ eventView }</>
   );
 };
 
