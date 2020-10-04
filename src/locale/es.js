@@ -22,9 +22,10 @@ export const es = {
   payment_add: "Nuevo Pago",
   payment_view_title: "Mi Pago",
   go_back: "Volver",
-  drawer_login: "Ingresar",
-  drawer_signup: "Registrarse",
-  drawer_events: "Eventos",
+  menu_login: "Ingresar",
+  menu_signup: "Registrarse",
+  menu_events: "Eventos",
+  menu_menu: "Menu",
   personal_info_title: "Datos personales",
   personal_info_name: "Nombre",
   personal_info_birthdate: "Fecha de Nacimiento",
@@ -36,7 +37,8 @@ export const es = {
   personal_info_notify_events: "Notificarme sobre nuevos eventos",
   personal_info_notify_job_searches: "Notificarme sobre búsquedas laborales",
   online_event_click: "Click here to enter to event",
+  menu_events: "Eventos",
+  menu_profile: "Perfil",
+  menu_social: "Comunidad",
+  menu_about_endava: "Acerca de Endava",
 };
-
-
-

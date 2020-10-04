@@ -4,10 +4,8 @@ import { Text, Linking } from "react-native";
 import i18n from "../locale/i18n";
 import { WebView } from 'react-native-webview';
 
-
 const EnrolledScreen = (props) => {
   const event = props.route.params;
-
   let eventView = (
     <Container>
       <Detail>Show this QR in the event's registration area</Detail>

@@ -1,22 +1,48 @@
 import React from "react";
-import { ScrollView, StatusBar } from "react-native";
+import { ScrollView, View } from "react-native";
 import Event from "../components/events/event.component";
-import styled from "styled-components/native";
-
+import { FloatingAction } from "react-native-floating-action";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const Tab = createMaterialTopTabNavigator();
 
-
+/* const actions = [
+  {
+    text: "Accessibility",
+    // icon: require("./images/ic_accessibility_white.png"),
+    name: "bt_accessibility",
+    position: 2,
+  },
+  {
+    text: "Language",
+    // icon: require("./images/ic_language_white.png"),
+    name: "bt_language",
+    position: 1,
+  },
+  {
+    text: "Location",
+    // icon: require("./images/ic_room_white.png"),
+    name: "bt_room",
+    position: 3,
+  },
+  {
+    text: "Video",
+    // icon: require("./images/ic_videocam_white.png"),
+    name: "bt_videocam",
+    position: 4,
+  },
+]; */
 
 const EventListScreen = (props) => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Upcoming Events" component={UpcomingEvents} style={{fontSize: 30}} />
-      <Tab.Screen name="Previous Events" component={PreviusEvents} style={{fontSize: 20}} />
+      <Tab.Screen name="Previous Events" component={PreviousEvents} style={{fontSize: 20}} />
     </Tab.Navigator>
   );
 };
+
+export default EventListScreen;
 
 
 const UpcomingEvents = (props) => {
@@ -27,54 +53,31 @@ const UpcomingEvents = (props) => {
   });
   
   return (
-    <Container>
-      <StatusBar
-        barStyle="light-content"
-        hidden={ false }
-        backgroundColor="#dc4c18"
-        translucent={ true }
-      />
       <ScrollView>{ events }</ScrollView>
-    </Container>
   )
 }
 
-const PreviusEvents = (props) => {
-  const events = previusEventsData.map((event, index) => {
+const PreviousEvents = (props) => {
+  const events = previousEventsData.map((event, index) => {
     return (
       <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
     );
   });
-  
+
   return (
-    <Container>
-      <StatusBar
-        barStyle="light-content"
-        hidden={ false }
-        backgroundColor="#dc4c18"
-        translucent={ true }
-      />
-      <ScrollView>{ events }</ScrollView>
-    </Container>
-  )
-}
-
-export default EventListScreen;
-
-const Container = styled.View`
-  margin-top: 35px;
-`;
-/* TODO: ver como meter estos estilos (algunos como padding dan error, deben ser distintos)
-         ver si se puede reemplazar el 35 fijo por algo mas relativo
-  flexDirection: 'row';
-  justifyContent: 'space-between';
-  align-items: 'center';
-  padding: 30;
-  margin: 2;
-  borderColor: '#2a4944';
-  borderWidth: 1;
-  backgroundColor: '#d2f7f1'  
-*/
+    <View>
+      <ScrollView>{events}</ScrollView>
+{/*       <FloatingAction
+        actions={actions}
+        onPressItem={(name) => {
+          console.log(`selected button: ${name}`);
+        }}
+        position="right"
+        distanceToEdge={{ vertical: -60, horizontal: 10 }}
+      /> */}
+    </View>
+  );
+};
 
 const upcomingEventsData = [
   
@@ -144,7 +147,7 @@ const upcomingEventsData = [
 ];
 
 
-const previusEventsData = [
+const previousEventsData = [
   {
     id: 1,
     image: require("./../../assets/event1.png"),
