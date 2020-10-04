@@ -3,25 +3,46 @@ import { ScrollView, StatusBar } from "react-native";
 import Event from "../components/events/event.component";
 import styled from "styled-components/native";
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import PersonalInfoScreen from "./personal-info.screen";
+const Drawer = createDrawerNavigator();
+
+
+
 const EventListScreen = (props) => {
+
+
+  return (
+
+    <Drawer.Navigator initialRouteName="evscreen">
+      <Drawer.Screen name="evscreen" component={ evscreen } />
+    </Drawer.Navigator>
+
+  );
+};
+
+
+const evscreen = (props) => {
+
   const events = eventsData.map((event, index) => {
     return (
-      <Event key={event.id} event={event} odd={index % 2} {...props}></Event>
+      <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
     );
   });
-
+  
   return (
     <Container>
       <StatusBar
         barStyle="light-content"
-        hidden={false}
+        hidden={ false }
         backgroundColor="#dc4c18"
-        translucent={true}
+        translucent={ true }
       />
-      <ScrollView>{events}</ScrollView>
+      <ScrollView>{ events }</ScrollView>
     </Container>
-  );
-};
+  )
+}
 
 export default EventListScreen;
 
