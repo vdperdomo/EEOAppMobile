@@ -6,7 +6,6 @@ import { WebView } from 'react-native-webview';
 import CountDown from 'react-native-countdown-component';
 import {differenceInSeconds} from 'date-fns';
 
-
 const EnrolledScreen = (props) => {
   const event = props.route.params;
 
@@ -14,7 +13,7 @@ const EnrolledScreen = (props) => {
 
   let eventView = (
     <Container>
-       <Detail>Thanks to subscribe! The event will start soon</Detail>
+       <Detail>Thanks for subscribing! The event will start soon</Detail>
        <CountDown
         until={countDownDate}
         size={35}
@@ -32,7 +31,7 @@ const EnrolledScreen = (props) => {
   if (event.online) {
     eventView = (
       <Container>
-       <Detail>Thanks to subscribe! The event will start soon</Detail>
+       <Detail>Thanks for subscribing! The event will start soon</Detail>
        <CountDown
         until={countDounDate}
         size={35}

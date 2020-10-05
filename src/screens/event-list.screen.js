@@ -1,86 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 import Event from "../components/events/event.component";
-import { FloatingAction } from "react-native-floating-action";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-const Tab = createMaterialTopTabNavigator();
-
-/* const actions = [
-  {
-    text: "Accessibility",
-    // icon: require("./images/ic_accessibility_white.png"),
-    name: "bt_accessibility",
-    position: 2,
-  },
-  {
-    text: "Language",
-    // icon: require("./images/ic_language_white.png"),
-    name: "bt_language",
-    position: 1,
-  },
-  {
-    text: "Location",
-    // icon: require("./images/ic_room_white.png"),
-    name: "bt_room",
-    position: 3,
-  },
-  {
-    text: "Video",
-    // icon: require("./images/ic_videocam_white.png"),
-    name: "bt_videocam",
-    position: 4,
-  },
-]; */
+const Drawer = createDrawerNavigator();
 
 const EventListScreen = (props) => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Upcoming Events" component={UpcomingEvents} style={{fontSize: 30}} />
-      <Tab.Screen name="Previous Events" component={PreviousEvents} style={{fontSize: 20}} />
-    </Tab.Navigator>
+    <Drawer.Navigator initialRouteName="EventList">
+      <Drawer.Screen name="EventList" component={EventList} />
+    </Drawer.Navigator>
   );
 };
 
-export default EventListScreen;
+const EventList = (props) => {
 
-
-const UpcomingEvents = (props) => {
-  const events = upcomingEventsData.map((event, index) => {
-    return (
-      <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
-    );
-  });
-  
-  return (
-      <ScrollView>{ events }</ScrollView>
-  )
-}
-
-const PreviousEvents = (props) => {
-  const events = previousEventsData.map((event, index) => {
-    return (
-      <Event key={ event.id } event={ event } odd={ index % 2 } { ...props }></Event>
-    );
+  const events = eventsData.map((event, index) => {
+    return <Event key={event.id} event={event} odd={index % 2} {...props}></Event>;
   });
 
   return (
     <View>
       <ScrollView>{events}</ScrollView>
-{/*       <FloatingAction
-        actions={actions}
-        onPressItem={(name) => {
-          console.log(`selected button: ${name}`);
-        }}
-        position="right"
-        distanceToEdge={{ vertical: -60, horizontal: 10 }}
-      /> */}
     </View>
   );
 };
 
-const upcomingEventsData = [
-  
+const eventsData = [
+  {
+    id: 1,
+    image: require("./../../assets/event1.png"),
+    date: "2020-04-28T03:00:00.000Z",
+    content: `Join the third #WebStories from #EndavaInLatam 😃 Don’t miss it!
+    Juan Andres Absi, Technical Lead and Developer from #EndavaInRosario, will present #Leaflet, a #JavaScript library, tomorrow Tuesday April 28th at 5:00pm ARG/URU, 3:00pm COL – 4:00pm VZL.
+    In this practical introduction, we will learn how to create interactive maps using Leaflet that, as well as being Open Source, is simple, lightweight and mobile friendly.
+    Access this link to register: https://bit.ly/3eYTHIW. You will receive the link to join the event a couple of hours before it stars.
+    #EndavaTrainings #KnowledgeSharing #Development #WorkAtEndava #StayAtHome`,
+    enrolled: true,
+    finished: true,
+  },
   {
     id: 2,
     image: require("./../../assets/event2.png"),
@@ -101,7 +59,7 @@ const upcomingEventsData = [
         Y además les acercaremos la librería MediaTR de C#. "Les mostraré cómo usarla para implementar el patrón Mediator que es de mucha ayuda cuando implementamos CQRS", nos adelanta Yanara Valdés Gil, nuestra Senior Developer de #EndavaInMontevideo y speaker del encuentro.
         Como todas las propuestas de este ciclo, esta también es gratis. Reserven su lugar aquí: https://buff.ly/3hBVns0
         #EndavaTrainings #Webinar #Microservices #EndavaTalents`,
-    enrolled: true,
+    enrolled: false,
   },
   {
     id: 4,
@@ -115,7 +73,7 @@ const upcomingEventsData = [
         #EndavaTrainings #IA #AI #WorkAtEndava #EndavansWorkFromHome #compartiendoconocimiento`,
     enrolled: true,
     online: true,
-    linkOnline: 'https://teams.microsoft.com/l/entity/'
+    linkOnline: "https://teams.microsoft.com/l/entity/",
   },
   {
     id: 5,
@@ -146,19 +104,4 @@ const upcomingEventsData = [
     }, */
 ];
 
-
-const previousEventsData = [
-  {
-    id: 1,
-    image: require("./../../assets/event1.png"),
-    date: "2020-04-28T03:00:00.000Z",
-    content: `Queremos invitarte al tercer #WebStories de #EndavaInLatam 😁 ¡Imperdible!
-        Juan Andrés Absi, Technical Lead y Developer de #EndavaInRosario, nos presentará #Leaflet, una librería de #JavaScript, mañana martes 28/4 a las 17 h ARG/URU - 15 h COL - 16 h VZL.
-        En esta introducción práctica veremos la construcción de mapas interactivos utilizando Leaflet que, además de ser Open Source, es simple, liviana, performante y mobile friendly.
-        Inscripción abierta aquí: https://bit.ly/3eYTHIW Unas horas antes del evento te llegará el link para participar ✔️
-        #EndavaTrainings #conocimientocompartido #Development #WorkAtEndava #QuedateEnCasa`,
-    enrolled: true,
-    finished: true,
-    linkVideo: 'https://www.youtube.com/watch?v=Y1tPyEim63A&list=PLjbWsoo02kUEl4sG8NaKbwMkFHQ5f0EwD&index=13'
-  }
-];
+export default EventListScreen;

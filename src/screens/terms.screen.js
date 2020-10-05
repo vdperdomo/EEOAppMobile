@@ -281,7 +281,6 @@ const TermsScreen = (props) => {
                   18. NEVADA RESIDENTS ONLY.
 
                   If you are a Nevada resident, you may have certain rights with respect to your information. For more information, please see the State-Specific Supplemental Privacy Notices here.
-
                 </Text>
               </TextContainerTS>
             </TouchableOpacity>
