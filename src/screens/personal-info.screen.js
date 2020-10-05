@@ -1,10 +1,3 @@
-// Nombre
-// Fecha Nac
-// Rol (dev-test-security-designer- otro field)
-// Estudiante (si/no) Donde
-// Trabaja / Compañia
-// Recibir notificaciones nuevas charlas / nuevas busquedas
-
 import React, { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { Form, Item, Label, Input, CheckBox } from "native-base";

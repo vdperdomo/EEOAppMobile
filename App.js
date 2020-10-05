@@ -11,6 +11,7 @@ import TermsScreen from "./src/screens/terms.screen";
 import PrivacyScreen from "./src/screens/privacy.screen";
 import PersonalInfoScreen from "./src/screens/personal-info.screen";
 import MenuScreen from "./src/screens/menu.screen";
+import MiniMenu from "./src/screens/mini-menu";
 import i18n from "./src/locale/i18n";
 
 const Stack = createStackNavigator();
@@ -27,7 +28,7 @@ const MyTheme = {
 export default function App() {
   return (
     <NavigationContainer theme={MyTheme} style={{ backgroundColor: MyTheme.colors.primary }}>
-      <Stack.Navigator initialRouteName="LogIn" screenOptions={{ backgroundColor: MyTheme.primary }} StackType="slide">
+      <Stack.Navigator initialRouteName="Events" screenOptions={{ backgroundColor: MyTheme.primary }} StackType="slide">
         <Stack.Screen
           name="Menu"
           component={MenuScreen}
@@ -109,27 +110,30 @@ export default function App() {
 }
 function Header(props) {
   return (
-    <ImageBackground style={{ width: "100%", height: 100 }} source={require("./assets/header-degre.png")}>
-      <View
-        style={{
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          height: 100,
-        }}
-      >
-        <Text
+    <View>
+      <MiniMenu navigation={props.navigation} />
+      <ImageBackground style={{ width: "100%", height: 100 }} source={require("./assets/header-degre.png")}>
+        <View
           style={{
-            fontSize: 35,
-            color: "white",
-            paddingLeft: 5,
-            paddingBottom: 15,
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            height: 100,
           }}
         >
-          {" "}
-          {props.title}{" "}
-        </Text>
-      </View>
-      <StatusBar barStyle="light-content" hidden={false} backgroundColor="#dc4c18" translucent={true} />
-    </ImageBackground>
+          <Text
+            style={{
+              fontSize: 35,
+              color: "white",
+              paddingLeft: 5,
+              paddingBottom: 15,
+            }}
+          >
+            {" "}
+            {props.title}{" "}
+          </Text>
+        </View>
+        <StatusBar barStyle="light-content" hidden={false} backgroundColor="#dc4c18" translucent={true} />
+      </ImageBackground>
+    </View>
   );
 }
