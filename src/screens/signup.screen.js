@@ -55,7 +55,7 @@ const SignUpScreen = (props) => {
             </TextContainerTS>
           </LinksTS>
           <Button onPress={createAccount} style={{ width: "100%" }}>
-            <ButtonText>{i18n.t("signup_button")} </ButtonText>
+            <ButtonText>{i18n.t("signup_continue_button")} </ButtonText>
           </Button>
         </Form>
         <Links>

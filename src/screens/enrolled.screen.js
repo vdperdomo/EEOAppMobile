@@ -10,13 +10,13 @@ import {differenceInSeconds} from 'date-fns';
 const EnrolledScreen = (props) => {
   const event = props.route.params;
 
-  const countDounDate = differenceInSeconds( new Date(event.date), new Date());
+  const countDownDate = differenceInSeconds( new Date(event.date), new Date());
 
   let eventView = (
     <Container>
        <Detail>Thanks to subscribe! The event will start soon</Detail>
        <CountDown
-        until={countDounDate}
+        until={countDownDate}
         size={35}
         digitStyle={{backgroundColor: '#dc4c18'}}
         digitTxtStyle={{color: '#fff'}}
