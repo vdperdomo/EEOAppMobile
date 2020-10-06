@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components/native";
 import { FloatingMenu } from "react-native-floating-action-menu";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faAddressCard, faHome, faUsers, faCalendar, faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -22,7 +21,7 @@ const MiniMenu = (props) => {
       fa: faUsers,
     },
     {
-      label: "Events",
+      label: "Menu",
       onPress: (item, index) => {
         props.navigation.navigate("Events");
       },
@@ -45,7 +44,7 @@ const MiniMenu = (props) => {
   ];
 
   const renderMenuIcon = menuState => {
-    const activeColor = '#000';
+    const activeColor = '#999';
     // const activeColor = '#DE411B';
     const {menuButtonDown} = menuState;
 
@@ -83,6 +82,9 @@ const MiniMenu = (props) => {
       position="top-right"
       renderItemIcon={renderItemIcon}
       renderMenuIcon={renderMenuIcon}
+      borderColor="#00000000"
+      backgroundColor="#DE411B"
+      iconColor="#DE411B"
     />
   );
 };

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import i18n from "../locale/i18n";
 import { Picker } from "@react-native-community/picker";
 import DatePicker from "react-native-datepicker";
+import { showMessage } from "react-native-flash-message";
+import FlashMessage from "react-native-flash-message";
 
 const PersonalInfoScreen = (props) => {
   const [values, setValues] = useState({
@@ -20,12 +22,27 @@ const PersonalInfoScreen = (props) => {
   });
 
   const createAccount = () => {
-    // props.navigation.navigate('Main');
-    props.navigation.navigate("Events");
+    showMessage({
+      message: "Success!!!",
+      description: "Your account has been successfully created",
+      type: "default",
+      backgroundColor: "#DE411B", // background color
+      color: "white",
+      animationDuration: 250,
+      style: {
+        top: 0,
+      }
+    });
+    
+    setTimeout(() => {
+      props.navigation.navigate("LogIn");
+    }, 2000)
   };
 
   return (
-    <Container>
+    <>
+      <FlashMessage position="top" />
+      <Container>
       <Page>
         <Title>{ i18n.t("personal_info_title") }</Title>
 
@@ -141,17 +158,19 @@ const PersonalInfoScreen = (props) => {
             <Label style={ { color: "#dc4c18" } }>{ i18n.t("personal_info_notify_job_searches") }</Label>
           </ListItem>
           <Footer>
-          <Button onPress={createAccount} style={{backgroundColor: '#379bd7'}} >
+          <Button type="button" onPress={createAccount} style={{backgroundColor: '#379bd7'}} >
             <ButtonText>{i18n.t("skip_button")} </ButtonText>
           </Button> 
-          <Button onPress={createAccount}>
+          <Button type="button" onPress={createAccount}>
             <ButtonText>{i18n.t("signup_button")} </ButtonText>
           </Button> 
           </Footer>
         </Form>
       </Page>
     </Container>
-  );
+
+    </>
+    );
 };
 
 export default PersonalInfoScreen;

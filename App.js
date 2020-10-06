@@ -28,7 +28,7 @@ const MyTheme = {
 export default function App() {
   return (
     <NavigationContainer theme={MyTheme} style={{ backgroundColor: MyTheme.colors.primary }}>
-      <Stack.Navigator initialRouteName="Events" screenOptions={{ backgroundColor: MyTheme.primary }} StackType="slide">
+      <Stack.Navigator initialRouteName="LogIn" screenOptions={{ backgroundColor: MyTheme.primary }} StackType="slide">
         <Stack.Screen
           name="Menu"
           component={MenuScreen}
@@ -67,9 +67,6 @@ export default function App() {
           options={{
             title: i18n.t("menu_events"),
             header: (props) => <Header {...props} title="EEO Events" />,
-            // header: () => null,
-            // headerTitle: (props) => <LogoTitle {...props} />,
-            // headerRight: () => <Button onPress={() => alert("This is a button!")} title="Info" color="#fff" />,
           }}
         />
         <Stack.Screen

@@ -36,6 +36,7 @@
     "react-native-cli": "^2.0.1",
     "react-native-countdown-component": "^2.7.1",
     "react-native-datepicker": "^1.7.2",
+    "react-native-flash-message": "^0.1.16",
     "react-native-floating-action": "^1.21.0",
     "react-native-floating-action-menu": "^1.1.10",
     "react-native-gesture-handler": "~1.6.0",

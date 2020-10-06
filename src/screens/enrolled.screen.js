@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Text, Linking } from "react-native";
+import { Linking } from "react-native";
 import i18n from "../locale/i18n";
 import { WebView } from 'react-native-webview';
 import CountDown from 'react-native-countdown-component';
@@ -33,7 +33,7 @@ const EnrolledScreen = (props) => {
       <Container>
        <Detail>Thanks for subscribing! The event will start soon</Detail>
        <CountDown
-        until={countDounDate}
+        until={countDownDate}
         size={35}
         digitStyle={{backgroundColor: '#dc4c18'}}
         digitTxtStyle={{color: '#fff'}}
@@ -86,7 +86,7 @@ const ImageBackground = styled.ImageBackground`
 
 
 const Link = styled.Text`
-margin-top: 50;
+  margin-top: 50px;
   color: #dc4c18;
   font-size: 25px
 `;

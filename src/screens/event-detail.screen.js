@@ -7,6 +7,9 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import ConfirmationModal from "../components/core/modal.component";
+import { showMessage, hideMessage } from "react-native-flash-message";
+import FlashMessage from "react-native-flash-message";
+
 
 const EventDetailScreen = (props) => {
   const [event, setEvent] = useState(props.route.params);
@@ -22,7 +25,18 @@ const EventDetailScreen = (props) => {
     event.enrolled = true;
     setEvent(event);
     setConfirmationDialog(false);
-    //props.navigation.state.params.onGoBack('123');
+
+    showMessage({
+      message: "Thank you for joining us!!!",
+      description: "You've successfully subscribed to the event",
+      type: "default",
+      backgroundColor: "#DE411B", // background color
+      color: "white",
+      animationDuration: 1000,
+      style: {
+        top: -50,
+      }
+    });
   };
 
   let buttonTitle = "Join me"
@@ -30,7 +44,9 @@ const EventDetailScreen = (props) => {
   if(event.finished) buttonTitle =  "See Video";
 
   return (
-    <Container>
+    <>
+     <FlashMessage position="top" />
+       <Container>
       <ScrollView>
         <View style={{ flexDirection: "column" }}>
           <Image source={event.image} resizeMode="contain"></Image>
@@ -52,6 +68,8 @@ const EventDetailScreen = (props) => {
         }
       ></ConfirmationModal>
     </Container>
+    </>
+   
   );
 };
 
@@ -80,6 +98,7 @@ const Details = styled.Text`
 const Button = styled.View`
   width: 90%;
   align-self: center;
+  padding-bottom: 20px;
 `;
 const Touch = styled.TouchableHighlight`
   bottom: 10%;
