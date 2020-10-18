@@ -42,6 +42,10 @@ const EnrolledScreen = (props) => {
           onPress={ () => Linking.openURL(event.linkOnline) }>
           {i18n.t("online_event_click")}
         </Link>
+        <Link
+          onPress={ () => props.navigation.navigate("SurveySlider", event) }>
+          {i18n.t("survey")}
+        </Link>
       </Container>
     )
   }
@@ -83,7 +87,6 @@ const ImageBackground = styled.ImageBackground`
   width: 80%;
   height: 250px;
 `;
-
 
 const Link = styled.Text`
   margin-top: 50px;

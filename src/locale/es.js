@@ -41,4 +41,5 @@ export const es = {
   menu_profile: "Perfil",
   menu_social: "Comunidad",
   menu_about_endava: "Acerca de Endava",
+  survey: "Encuesta",
 };

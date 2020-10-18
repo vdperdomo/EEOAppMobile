@@ -91,6 +91,7 @@ const upcomingEventsData = [
         ¡No se lo pierdan!
         #EndavaTrainings #conocimientocompartido #Testing #WorkAtEndava #QuedateEnCasa`,
     enrolled: false,
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 3,
@@ -102,6 +103,7 @@ const upcomingEventsData = [
         Como todas las propuestas de este ciclo, esta también es gratis. Reserven su lugar aquí: https://buff.ly/3hBVns0
         #EndavaTrainings #Webinar #Microservices #EndavaTalents`,
     enrolled: true,
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 4,
@@ -115,7 +117,8 @@ const upcomingEventsData = [
         #EndavaTrainings #IA #AI #WorkAtEndava #EndavansWorkFromHome #compartiendoconocimiento`,
     enrolled: true,
     online: true,
-    linkOnline: 'https://teams.microsoft.com/l/entity/'
+    linkOnline: 'https://teams.microsoft.com/l/entity/',
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 5,
@@ -130,6 +133,7 @@ const upcomingEventsData = [
         Link de inscripción: https://bit.ly/3iVCmCp
         #Webinar #EndavaTrainings #Kubernets #Contenedores #ConocimientoCompartido`,
     enrolled: false,
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 6,
@@ -144,6 +148,7 @@ const upcomingEventsData = [
         Link de inscripción: https://bit.ly/3iVCmCp
         #Webinar #EndavaTrainings #Kubernets #Contenedores #ConocimientoCompartido`,
     enrolled: false,
+    titleImage: require("./../../assets/webstories.png"),
   }
 ];
 
@@ -159,7 +164,8 @@ const previousEventsData = [
     
     enrolled: true,
     finished: true,
-    linkVideo: 'https://www.youtube.com/watch?v=Y1tPyEim63A&list=PLjbWsoo02kUEl4sG8NaKbwMkFHQ5f0EwD&index=13'
+    linkVideo: 'https://www.youtube.com/watch?v=Y1tPyEim63A&list=PLjbWsoo02kUEl4sG8NaKbwMkFHQ5f0EwD&index=13',
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 7,
@@ -174,6 +180,7 @@ const previousEventsData = [
         Link de inscripción: https://bit.ly/3iVCmCp
         #Webinar #EndavaTrainings #Kubernets #Contenedores #ConocimientoCompartido`,
     enrolled: false,
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 8,
@@ -188,6 +195,7 @@ const previousEventsData = [
         Link de inscripción: https://bit.ly/3iVCmCp
         #Webinar #EndavaTrainings #Kubernets #Contenedores #ConocimientoCompartido`,
     enrolled: false,
+    titleImage: require("./../../assets/webstories.png"),
   },
   {
     id: 9,
@@ -202,5 +210,6 @@ const previousEventsData = [
         Link de inscripción: https://bit.ly/3iVCmCp
         #Webinar #EndavaTrainings #Kubernets #Contenedores #ConocimientoCompartido`,
     enrolled: false,
+    titleImage: require("./../../assets/webstories.png"),
   }
 ];

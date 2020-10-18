@@ -12,6 +12,7 @@ import PrivacyScreen from "./src/screens/privacy.screen";
 import PersonalInfoScreen from "./src/screens/personal-info.screen";
 import MenuScreen from "./src/screens/menu.screen";
 import MiniMenu from "./src/screens/mini-menu";
+import SurveySlider from "./src/screens/survey-slider.screen";
 import i18n from "./src/locale/i18n";
 
 const Stack = createStackNavigator();
@@ -101,6 +102,14 @@ export default function App() {
             header: (props) => <Header {...props} />,
           }}
         />
+        <Stack.Screen
+          name="SurveySlider"
+          component={SurveySlider}
+          options={{
+            title: "Survey Slider",
+            header: (props) => <Header {...props} />,
+          }}
+        />        
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import {
-  ScrollView,
-  Text,
-  View,
-  TouchableHighlight,
-} from "react-native";
+import { ScrollView, Text, View, TouchableHighlight } from "react-native";
 import styled from "styled-components/native";
 import ConfirmationModal from "../components/core/modal.component";
 import { showMessage, hideMessage } from "react-native-flash-message";
 import FlashMessage from "react-native-flash-message";
-
 
 const EventDetailScreen = (props) => {
   const [event, setEvent] = useState(props.route.params);
@@ -35,41 +29,38 @@ const EventDetailScreen = (props) => {
       animationDuration: 1000,
       style: {
         top: -50,
-      }
+      },
     });
   };
 
-  let buttonTitle = "Join me"
-  if(event.enrolled) buttonTitle = (event.online) ? "See Link" : "See QR Code";
-  if(event.finished) buttonTitle =  "See Video";
+  let buttonTitle = "Join me";
+  if (event.enrolled) buttonTitle = event.online ? "See Link" : "See QR Code";
+  if (event.finished) buttonTitle = "See Video";
 
   return (
     <>
-     <FlashMessage position="top" />
-       <Container>
-      <ScrollView>
-        <View style={{ flexDirection: "column" }}>
-          <Image source={event.image} resizeMode="contain"></Image>
-          <Details>{event.content}</Details>
-        </View>
-      </ScrollView>
-      <Button>
-        <Touch onPress={enroll} activeOpacity={0.8} underlayColor="#ac2f02">
-        <ButtonContent>{buttonTitle}</ButtonContent>
-        </Touch>
-      </Button>
-      <ConfirmationModal
-        visible={confirmationDialog}
-        cancel={setConfirmationDialog}
-        confirm={updateEnrollment}
-        title={"Join me"}
-        content={
-          "We really want to have you here! Would you like to join the event? "
-        }
-      ></ConfirmationModal>
-    </Container>
+      <FlashMessage position="top" />
+      <Container>
+        <ScrollView>
+          <View style={{ flexDirection: "column" }}>
+            <Image source={event.image} resizeMode="contain"></Image>
+            <Details>{event.content}</Details>
+          </View>
+        </ScrollView>
+        <Button>
+          <Touch onPress={enroll} activeOpacity={0.8} underlayColor="#ac2f02">
+            <ButtonContent>{buttonTitle}</ButtonContent>
+          </Touch>
+        </Button>
+        <ConfirmationModal
+          visible={confirmationDialog}
+          cancel={setConfirmationDialog}
+          confirm={updateEnrollment}
+          title={"Join me"}
+          content={"We really want to have you here! Would you like to join the event? "}
+        ></ConfirmationModal>
+      </Container>
     </>
-   
   );
 };
 
