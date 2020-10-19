@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, View, TouchableHighlight } from "react-native";
 import styled from "styled-components/native";
 import { Linking } from "react-native";
@@ -7,7 +7,12 @@ import { WebView } from "react-native-webview";
 import Slider from "@react-native-community/slider";
 
 const SurveySliderScreen = (props) => {
-  const event = props.route.params;
+  const [event, setevent] = useState(props.route.params);
+
+  const goToSurveyOptions = () => {
+    props.navigation.navigate("SurveyOptions", event);
+  };
+
 
   const eventView = (
     <Container>
@@ -34,23 +39,12 @@ const SurveySliderScreen = (props) => {
       </View>
       <Container><Text style={{height: 200}}></Text></Container>
       <Button>
-        <Touch activeOpacity={0.8} underlayColor="#ac2f02">
+        <Touch onPress={goToSurveyOptions} activeOpacity={0.8} underlayColor="#ac2f02">
           <ButtonContent>Next</ButtonContent>
         </Touch>
       </Button>
     </Container>
   );
-
-  // if (event.finished) {
-  //   eventView = (
-  //     <WebView
-  //       allowsFullscreenVideo
-  //       allowsInlineMediaPlayback
-  //       mediaPlaybackRequiresUserAction
-  //       source={{ uri: event.linkVideo }}
-  //     />
-  //   );
-  // }
 
   return <>{eventView}</>;
 };
