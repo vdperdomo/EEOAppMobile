@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TouchableOpacity, View, ScrollView } from "react-native";
 import { Form, Item, Label, Input, CheckBox } from "native-base";
 import styled from "styled-components";
-import i18n from "../locale/i18n";
+import i18n from "../../locale/i18n";
 
 const PrivacyScreen = (props) => {
   const goBack = () => {
@@ -12,16 +12,16 @@ const PrivacyScreen = (props) => {
   return (
     <Container>
       <Page>
-        <Title>{i18n.t("signup_privacy_policy")}</Title>
+        <Title>{ i18n.t("signup_privacy_policy") }</Title>
         <Form>
           <ScrollView
-            contentContainerStyle={{
+            contentContainerStyle={ {
               // flex: 1,
               justifyContent: "space-between",
-            }}
+            } }
           >
-            <TextContainerTXS style={{ flexShrink: 1 }}>
-              <Text style={{ color: "#dc4c18" }}>
+            <TextContainerTXS style={ { flexShrink: 1 } }>
+              <Text style={ { color: "#dc4c18" } }>
                 Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
                 rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt,
                 explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia
@@ -31,8 +31,8 @@ const PrivacyScreen = (props) => {
               </Text>
             </TextContainerTXS>
           </ScrollView>
-          <Button onPress={goBack} style={{ width: "100%" }}>
-            <ButtonText>{i18n.t("go_back")}</ButtonText>
+          <Button onPress={ goBack } style={ { width: "100%" } }>
+            <ButtonText>{ i18n.t("go_back") }</ButtonText>
           </Button>
         </Form>
       </Page>

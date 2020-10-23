@@ -1,7 +1,7 @@
 import React from "react";
-import { TouchableOpacity, View, StatusBar, ScrollView } from "react-native";
+import { TouchableOpacity, StatusBar, ScrollView } from "react-native";
 import styled from "styled-components";
-import i18n from "../locale/i18n";
+import i18n from "../../locale/i18n";
 
 const TermsScreen = (props) => {
   const goBack = () => {

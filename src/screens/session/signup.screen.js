@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { TouchableOpacity, View, StatusBar } from "react-native";
 import { Form, Item, Label, Input, CheckBox } from "native-base";
 import styled from "styled-components";
-import i18n from "../locale/i18n";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import i18n from "../../locale/i18n";
 
 const SignUpScreen = (props) => {
   const [values, setValues] = useState({
@@ -20,48 +17,48 @@ const SignUpScreen = (props) => {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#dc4c18" translucent={true} />
+      <StatusBar barStyle="dark-content" hidden={ false } backgroundColor="#dc4c18" translucent={ true } />
       <Page>
-        <Title>{i18n.t("signup_title")}</Title>
+        <Title>{ i18n.t("signup_title") }</Title>
 
         <Form>
-          <Item floatingLabel style={{ marginLeft: 0 }}>
-            <Label style={{ color: "#dc4c18" }}>{i18n.t("username")}</Label>
-            <Input onChangeText={(val) => setValues({ ...values, username: val })} value={values.username} />
+          <Item floatingLabel style={ { marginLeft: 0 } }>
+            <Label style={ { color: "#dc4c18" } }>{ i18n.t("username") }</Label>
+            <Input onChangeText={ (val) => setValues({ ...values, username: val }) } value={ values.username } />
           </Item>
-          <Item floatingLabel style={{ marginLeft: 0 }}>
-            <Label style={{ color: "#dc4c18" }}>{i18n.t("password")}</Label>
-            <Input secureTextEntry={true} onChangeText={(val) => setValues({ ...values, password: val })} value={values.password} />
+          <Item floatingLabel style={ { marginLeft: 0 } }>
+            <Label style={ { color: "#dc4c18" } }>{ i18n.t("password") }</Label>
+            <Input secureTextEntry={ true } onChangeText={ (val) => setValues({ ...values, password: val }) } value={ values.password } />
           </Item>
 
           <LinksTS>
             <CheckBox
-              checked={values.terms}
-              onPress={() => {
+              checked={ values.terms }
+              onPress={ () => {
                 setValues({ ...values, terms: !values.terms });
-              }}
+              } }
               color="#dc4c18"
-              style={{ marginRight: 25, borderRadius: 5 }}
+              style={ { marginRight: 25, borderRadius: 5 } }
             />
-            <TextContainerTS style={{ flexShrink: 1 }}>
-              <Text>{i18n.t("signup_terms")} </Text>
-              <Text style={{ color: "#dc4c18" }} onPress={() => props.navigation.navigate("Terms")}>
-                {i18n.t("signup_terms_link")}
+            <TextContainerTS style={ { flexShrink: 1 } }>
+              <Text>{ i18n.t("signup_terms") } </Text>
+              <Text style={ { color: "#dc4c18" } } onPress={ () => props.navigation.navigate("Terms") }>
+                { i18n.t("signup_terms_link") }
               </Text>
-              <Text> {i18n.t("signup_terms_and")} </Text>
-              <Text style={{ color: "#dc4c18" }} onPress={() => props.navigation.navigate("Privacy")}>
-                {i18n.t("signup_privacy_policy")}
+              <Text> { i18n.t("signup_terms_and") } </Text>
+              <Text style={ { color: "#dc4c18" } } onPress={ () => props.navigation.navigate("Privacy") }>
+                { i18n.t("signup_privacy_policy") }
               </Text>
             </TextContainerTS>
           </LinksTS>
-          <Button onPress={createAccount} style={{ width: "100%" }}>
-            <ButtonText>{i18n.t("signup_continue_button")} </ButtonText>
+          <Button onPress={ createAccount } style={ { width: "100%" } }>
+            <ButtonText>{ i18n.t("signup_continue_button") } </ButtonText>
           </Button>
         </Form>
         <Links>
-          <Text>{i18n.t("signup_have_account")}</Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate("LogIn")}>
-            <Text style={{ paddingLeft: 10, color: "#dc4c18" }}>{i18n.t("signup_login_redirect")}</Text>
+          <Text>{ i18n.t("signup_have_account") }</Text>
+          <TouchableOpacity onPress={ () => props.navigation.navigate("LogIn") }>
+            <Text style={ { paddingLeft: 10, color: "#dc4c18" } }>{ i18n.t("signup_login_redirect") }</Text>
           </TouchableOpacity>
         </Links>
       </Page>

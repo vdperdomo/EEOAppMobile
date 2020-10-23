@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ScrollView, Text, View, TouchableHighlight } from "react-native";
+import { ScrollView, View } from "react-native";
 import styled from "styled-components/native";
-import ConfirmationModal from "../components/core/modal.component";
-import { showMessage, hideMessage } from "react-native-flash-message";
+import ConfirmationModal from "../../components/core/modal.component";
+import { showMessage } from "react-native-flash-message";
 import FlashMessage from "react-native-flash-message";
 
 const EventDetailScreen = (props) => {
@@ -42,22 +42,22 @@ const EventDetailScreen = (props) => {
       <FlashMessage position="top" />
       <Container>
         <ScrollView>
-          <View style={{ flexDirection: "column" }}>
-            <Image source={event.image} resizeMode="contain"></Image>
-            <Details>{event.content}</Details>
+          <View style={ { flexDirection: "column" } }>
+            <Image source={ event.image } resizeMode="contain"></Image>
+            <Details>{ event.content }</Details>
           </View>
         </ScrollView>
         <Button>
-          <Touch onPress={enroll} activeOpacity={0.8} underlayColor="#ac2f02">
-            <ButtonContent>{buttonTitle}</ButtonContent>
+          <Touch onPress={ enroll } activeOpacity={ 0.8 } underlayColor="#ac2f02">
+            <ButtonContent>{ buttonTitle }</ButtonContent>
           </Touch>
         </Button>
         <ConfirmationModal
-          visible={confirmationDialog}
-          cancel={setConfirmationDialog}
-          confirm={updateEnrollment}
-          title={"Join me"}
-          content={"We really want to have you here! Would you like to join the event? "}
+          visible={ confirmationDialog }
+          cancel={ setConfirmationDialog }
+          confirm={ updateEnrollment }
+          title={ "Join me" }
+          content={ "We really want to have you here! Would you like to join the event? " }
         ></ConfirmationModal>
       </Container>
     </>

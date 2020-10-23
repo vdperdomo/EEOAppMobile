@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { ScrollView, View, TouchableHighlight } from "react-native";
+import { View } from "react-native";
 import styled from "styled-components/native";
-import { Linking } from "react-native";
-import i18n from "../locale/i18n";
-import { WebView } from "react-native-webview";
-import Slider from "@react-native-community/slider";
+import RatingSlider from "../../components/core/rating.component";
+
 
 const SurveySliderScreen = (props) => {
   const [event, setevent] = useState(props.route.params);
@@ -16,37 +14,25 @@ const SurveySliderScreen = (props) => {
 
   const eventView = (
     <Container>
-      <Image source={event.titleImage} resizeMode="contain"></Image>
+      <Image source={ event.titleImage } resizeMode="contain"></Image>
       <Detail>Your opinion matters!</Detail>
-      <View style={{ flexDirection: "column" }}>
+      <View style={ { flexDirection: "column", width: '100%' } }>
         <Container>
           <Text>Q#1 out of 3</Text>
           <SocialText>In general, what did you think about the event?</SocialText>
-          {/* <SmallText>Take into account that 0 means “Bad” and 10 stands for “Excellent”</SmallText> */}
-          <Slider
-            style={{ width: 370, height: 80 }}
-            minimumValue={0}
-            maximumValue={1}
-            minimumTrackTintColor="#DE411B"
-            maximumTrackTintColor="#9BB4BE"
-            thumbImage={require("./../../assets/endava-adn-25.png")}
-          />
-          <View style={{ flexDirection: "row", selfAlign: "center", width: "80%" }}>
-            <Text style={{width: "50%"}}>Bad</Text>
-            <Text style={{width: "50%", textAlign: "right"}}>Excellent!</Text>
-          </View>
+          <RatingSlider></RatingSlider>
         </Container>
       </View>
-      <Container><Text style={{height: 200}}></Text></Container>
+      <Container><Text style={ { height: 200 } }></Text></Container>
       <Button>
-        <Touch onPress={goToSurveyOptions} activeOpacity={0.8} underlayColor="#ac2f02">
+        <Touch onPress={ goToSurveyOptions } activeOpacity={ 0.8 } underlayColor="#ac2f02">
           <ButtonContent>Next</ButtonContent>
         </Touch>
       </Button>
     </Container>
   );
 
-  return <>{eventView}</>;
+  return <>{ eventView }</>;
 };
 
 export default SurveySliderScreen;

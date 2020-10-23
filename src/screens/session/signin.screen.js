@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { Form, Item, Label, Input } from "native-base";
 import styled from "styled-components";
-import i18n from "../locale/i18n";
+import i18n from "../../locale/i18n";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
@@ -17,53 +17,53 @@ const SignInScreen = (props) => {
   return (
     <Container>
       <LogoContainer>
-        <Logo source={require("../../assets/logo.png")}></Logo>
+        <Logo source={ require("../../../assets/logo.png") }></Logo>
       </LogoContainer>
       <Page>
-        <Title>{i18n.t("login_title")}</Title>
-        <Text>{i18n.t("login_subtitle")}</Text>
+        <Title>{ i18n.t("login_title") }</Title>
+        <Text>{ i18n.t("login_subtitle") }</Text>
 
         <Form>
-          <Item floatingLabel style={{ marginLeft: 0 }}>
-            <Label style={{ color: "#dc4c18" }}>{i18n.t("username")}</Label>
+          <Item floatingLabel style={ { marginLeft: 0 } }>
+            <Label style={ { color: "#dc4c18" } }>{ i18n.t("username") }</Label>
             <Input
-              onChangeText={(val) => setValues({ ...values, username: val })}
-              value={values.username}
+              onChangeText={ (val) => setValues({ ...values, username: val }) }
+              value={ values.username }
             />
           </Item>
-          <Item floatingLabel style={{ marginLeft: 0 }}>
-            <Label style={{ color: "#dc4c18" }}>{i18n.t("password")}</Label>
+          <Item floatingLabel style={ { marginLeft: 0 } }>
+            <Label style={ { color: "#dc4c18" } }>{ i18n.t("password") }</Label>
             <Input
-              onChangeText={(val) => setValues({ ...values, password: val })}
-              value={values.password}
-              secureTextEntry={true}
+              onChangeText={ (val) => setValues({ ...values, password: val }) }
+              value={ values.password }
+              secureTextEntry={ true }
             />
           </Item>
-          <Button onPress={login} style={{ width: "100%" }}>
-            <ButtonText>{i18n.t("login_button")} </ButtonText>
+          <Button onPress={ login } style={ { width: "100%" } }>
+            <ButtonText>{ i18n.t("login_button") } </ButtonText>
           </Button>
         </Form>
-        <SocialText>{i18n.t("social_profile")}</SocialText>
+        <SocialText>{ i18n.t("social_profile") }</SocialText>
         <Social>
-          <Button onPress={login} style={{ backgroundColor: "#d0021b" }}>
-            <FontAwesomeIcon icon={faEnvelope} color={"white"} size={20} />
+          <Button onPress={ login } style={ { backgroundColor: "#d0021b" } }>
+            <FontAwesomeIcon icon={ faEnvelope } color={ "white" } size={ 20 } />
             <ButtonContainer>
-              <ButtonText>{i18n.t("google_button")}</ButtonText>
+              <ButtonText>{ i18n.t("google_button") }</ButtonText>
             </ButtonContainer>
           </Button>
-          <Button onPress={login} style={{ backgroundColor: "#3b5998" }}>
-            <FontAwesomeIcon icon={faFacebookF} color={"white"} size={20} />
+          <Button onPress={ login } style={ { backgroundColor: "#3b5998" } }>
+            <FontAwesomeIcon icon={ faFacebookF } color={ "white" } size={ 20 } />
             <ButtonContainer>
-              <ButtonText>{i18n.t("facebook_button")}</ButtonText>
+              <ButtonText>{ i18n.t("facebook_button") }</ButtonText>
             </ButtonContainer>
           </Button>
         </Social>
         <Links>
           <TouchableOpacity>
-            <SmallText>{i18n.t("recover_password")}</SmallText>
+            <SmallText>{ i18n.t("recover_password") }</SmallText>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
-            <SmallText style={{ color: "#dc4c18" }}>{i18n.t("new_account")}</SmallText>
+          <TouchableOpacity onPress={ () => props.navigation.navigate("SignUp") }>
+            <SmallText style={ { color: "#dc4c18" } }>{ i18n.t("new_account") }</SmallText>
           </TouchableOpacity>
         </Links>
       </Page>
