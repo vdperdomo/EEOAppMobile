@@ -78,18 +78,23 @@ const PreviousEvents = (props) => {
   );
 };
 
-const upcomingEventsData = [
+const inAMinute = () => {
+  const now = new Date();
+  return new Date(now.getTime() + 30000);
+};
 
+const upcomingEventsData = [
   {
     id: 2,
     image: require("./../../../assets/event2.png"),
-    date: "2020-10-12T03:00:00.000Z",
+    date: `${inAMinute()}`,
     content: `Andrés Nieves, Technical Lead y Developer de #EndavaInMontevideo nos compartirá sus conocimientos sobre "Mutation Testing" el viernes 24/4 a las 15 h ARG/URU - 13 h COL - 14 h VZL.
         Hará una breve intro técnica sobre cómo utilizarlo para mejorar los Unit Tests y también explicará cómo puede Mutation Testing llevar a mejorar el diseño y la calidad de nuestro software.
-        Inscribanse en este enlace: https://bit.ly/2yvKrep y antes del evento les haremos llegar el link para participar.
         ¡No se lo pierdan!
         #EndavaTrainings #conocimientocompartido #Testing #WorkAtEndava #QuedateEnCasa`,
     enrolled: false,
+    online: true,
+    linkOnline: 'https://teams.microsoft.com/l/entity/',
     titleImage: require("./../../../assets/webstories.png"),
   },
   {

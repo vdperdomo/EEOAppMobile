@@ -1,55 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Linking } from "react-native";
 import i18n from "../../locale/i18n";
-import { WebView } from 'react-native-webview';
-import CountDown from 'react-native-countdown-component';
-import { differenceInSeconds } from 'date-fns';
+import { WebView } from "react-native-webview";
+import CountDown from "react-native-countdown-component";
+import { differenceInSeconds } from "date-fns";
 
 const EnrolledScreen = (props) => {
   const event = props.route.params;
+  const [eventHappening, setEventHappening] = useState(false);
+  const [countDownDate, setCountDownDate] = useState(differenceInSeconds(new Date(event.date), new Date()));
 
-  const countDownDate = differenceInSeconds(new Date(event.date), new Date());
+  const eventHappensNow = () => {
+    setCountDownDate(0);
+    setEventHappening(true);
+  };
+
 
   let eventView = (
     <Container>
       <Detail>Thanks for subscribing! The event will start soon</Detail>
       <CountDown
-        until={ countDownDate }
-        size={ 35 }
-        digitStyle={ { backgroundColor: '#dc4c18' } }
-        digitTxtStyle={ { color: '#fff' } }
+        until={countDownDate}
+        size={35}
+        digitStyle={{ backgroundColor: "#dc4c18" }}
+        digitTxtStyle={{ color: "#fff" }}
+        onFinish={eventHappensNow}
+        running={countDownDate > 0}
       />
       <Detail>Show this QR in the event's registration area</Detail>
-      <ImageBackground
-        source={ require("../../../assets/qr.png") }
-        resizeMode="contain"
-      ></ImageBackground>
+      <ImageBackground source={require("../../../assets/qr.png")} resizeMode="contain"></ImageBackground>
     </Container>
-  )
+  );
+
+  const links = eventHappening ? (
+    <>
+      <Link onPress={() => Linking.openURL(event.linkOnline)}>{i18n.t("online_event_click")}</Link>
+      <Link onPress={() => props.navigation.navigate("SurveySlider", event)}>{i18n.t("survey")}</Link>
+    </>
+  ) : null;
 
   if (event.online) {
     eventView = (
       <Container>
         <Detail>Thanks for subscribing! The event will start soon</Detail>
         <CountDown
-          until={ countDownDate }
-          size={ 35 }
-          digitStyle={ { backgroundColor: '#dc4c18' } }
-          digitTxtStyle={ { color: '#fff' } }
+          until={countDownDate}
+          size={35}
+          digitStyle={{ backgroundColor: "#dc4c18" }}
+          digitTxtStyle={{ color: "#fff" }}
+          onFinish={eventHappensNow}
+          running={countDownDate > 0}
         />
-        <Link
-          onPress={ () => Linking.openURL(event.linkOnline) }>
-          { i18n.t("online_event_click") }
-        </Link>
-        <Link
-          onPress={ () => props.navigation.navigate("SurveySlider", event) }>
-          { i18n.t("survey") }
-        </Link>
+        {links}
       </Container>
-    )
+    );
   }
-
 
   if (event.finished) {
     eventView = (
@@ -57,14 +63,12 @@ const EnrolledScreen = (props) => {
         allowsFullscreenVideo
         allowsInlineMediaPlayback
         mediaPlaybackRequiresUserAction
-        source={ { uri: event.linkVideo } }
+        source={{ uri: event.linkVideo }}
       />
-    )
+    );
   }
 
-  return (
-    <>{ eventView }</>
-  );
+  return <>{eventView}</>;
 };
 
 export default EnrolledScreen;
@@ -91,5 +95,5 @@ const ImageBackground = styled.ImageBackground`
 const Link = styled.Text`
   margin-top: 50px;
   color: #dc4c18;
-  font-size: 25px
+  font-size: 25px;
 `;
