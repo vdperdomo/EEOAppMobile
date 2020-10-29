@@ -42,4 +42,6 @@ export const es = {
   menu_social: "Comunidad",
   menu_about_endava: "Acerca de Endava",
   survey: "Encuesta",
+  event_happening: "El evento ha comenzado!",
+  event_soon: "Gracias por inscribirte! el evento comenzará pronto",
 };

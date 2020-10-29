@@ -16,10 +16,16 @@ const EnrolledScreen = (props) => {
     setEventHappening(true);
   };
 
+  const liveEventInfo = (
+    <>
+      <Detail>Show this QR in the event's registration area</Detail>
+      <ImageBackground source={require("../../../assets/qr.png")} resizeMode="contain"></ImageBackground>
+    </>
+  );
 
-  let eventView = (
-    <Container>
-      <Detail>Thanks for subscribing! The event will start soon</Detail>
+  const eventSoon = (
+    <>
+      <Detail>{i18n.t("event_soon")}</Detail>
       <CountDown
         until={countDownDate}
         size={35}
@@ -28,47 +34,36 @@ const EnrolledScreen = (props) => {
         onFinish={eventHappensNow}
         running={countDownDate > 0}
       />
-      <Detail>Show this QR in the event's registration area</Detail>
-      <ImageBackground source={require("../../../assets/qr.png")} resizeMode="contain"></ImageBackground>
-    </Container>
+    </>
   );
 
-  const links = eventHappening ? (
+  const eventNow = <Title>{i18n.t("event_happening")}</Title>;
+
+  const links = (
     <>
       <Link onPress={() => Linking.openURL(event.linkOnline)}>{i18n.t("online_event_click")}</Link>
-      <Link onPress={() => props.navigation.navigate("SurveySlider", event)}>{i18n.t("survey")}</Link>
+      {eventHappening ? (
+        <Link onPress={() => props.navigation.navigate("SurveySlider", event)}>{i18n.t("survey")}</Link>
+      ) : null}
     </>
-  ) : null;
+  );
 
-  if (event.online) {
-    eventView = (
-      <Container>
-        <Detail>Thanks for subscribing! The event will start soon</Detail>
-        <CountDown
-          until={countDownDate}
-          size={35}
-          digitStyle={{ backgroundColor: "#dc4c18" }}
-          digitTxtStyle={{ color: "#fff" }}
-          onFinish={eventHappensNow}
-          running={countDownDate > 0}
-        />
-        {links}
-      </Container>
-    );
-  }
+  const postEvent = (
+    <WebView
+      allowsFullscreenVideo
+      allowsInlineMediaPlayback
+      mediaPlaybackRequiresUserAction
+      source={{ uri: event.linkVideo }}
+    />
+  );
 
-  if (event.finished) {
-    eventView = (
-      <WebView
-        allowsFullscreenVideo
-        allowsInlineMediaPlayback
-        mediaPlaybackRequiresUserAction
-        source={{ uri: event.linkVideo }}
-      />
-    );
-  }
-
-  return <>{eventView}</>;
+  return (
+    <Container>
+      {eventHappening ? eventNow : eventSoon}
+      {event.online ? links : liveEventInfo}
+      {event.finished ? postEvent : null}
+    </Container>
+  );
 };
 
 export default EnrolledScreen;
@@ -96,4 +91,10 @@ const Link = styled.Text`
   margin-top: 50px;
   color: #dc4c18;
   font-size: 25px;
+`;
+
+const Title = styled.Text`
+  font-size: 32px;
+  font-weight: bold;
+  padding: 5px 0;
 `;

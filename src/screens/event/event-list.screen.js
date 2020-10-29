@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 import Event from "../../components/events/event.component";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import moment from "moment"
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -78,16 +79,15 @@ const PreviousEvents = (props) => {
   );
 };
 
-const inAMinute = () => {
-  const now = new Date();
-  return new Date(now.getTime() + 30000);
+const reallySoon = () => {
+  return moment().add(30, 'seconds').format();
 };
 
 const upcomingEventsData = [
   {
     id: 2,
     image: require("./../../../assets/event2.png"),
-    date: `${inAMinute()}`,
+    date: `${reallySoon()}`,
     content: `Andrés Nieves, Technical Lead y Developer de #EndavaInMontevideo nos compartirá sus conocimientos sobre "Mutation Testing" el viernes 24/4 a las 15 h ARG/URU - 13 h COL - 14 h VZL.
         Hará una breve intro técnica sobre cómo utilizarlo para mejorar los Unit Tests y también explicará cómo puede Mutation Testing llevar a mejorar el diseño y la calidad de nuestro software.
         ¡No se lo pierdan!
@@ -100,7 +100,8 @@ const upcomingEventsData = [
   {
     id: 3,
     image: require("./../../../assets/event3.png"),
-    date: "2020-10-20T03:00:00.000Z",
+    // date: "2020-10-20T03:00:00.000Z",
+    date: `${reallySoon()}`,
     content: `#Webstories Seguimos con #Microservicios
         La semana pasada tuvimos una introducción al mundo de los microservicios de la mano de Radu Vunvulea. En la sesión de este jueves seguiremos profundizando el tema con los conceptos fundamentales del patrón de diseño CQRS. Veremos cómo aplicarlo en un microservicio utilizando #ASP .NET CORE.
         Y además les acercaremos la librería MediaTR de C#. "Les mostraré cómo usarla para implementar el patrón Mediator que es de mucha ayuda cuando implementamos CQRS", nos adelanta Yanara Valdés Gil, nuestra Senior Developer de #EndavaInMontevideo y speaker del encuentro.

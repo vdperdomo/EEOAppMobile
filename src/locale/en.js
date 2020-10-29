@@ -44,4 +44,6 @@ export const en = {
   menu_social: "Community",
   menu_about_endava: "About Endava",
   survey: "Survey",
+  event_happening: "The Event has started!",
+  event_soon: "Thanks for subscribing! The event will start soon",
 };
