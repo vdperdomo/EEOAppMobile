@@ -42,11 +42,10 @@ const EnrolledScreen = (props) => {
   const links = (
     <>
       <Link onPress={() => Linking.openURL(event.linkOnline)}>{i18n.t("online_event_click")}</Link>
-      {eventHappening ? (
-        <Link onPress={() => props.navigation.navigate("SurveySlider", event)}>{i18n.t("survey")}</Link>
-      ) : null}
     </>
   );
+
+  const survey = (<Link onPress={() => props.navigation.navigate("SurveySlider", event)}>{i18n.t("survey")}</Link>);
 
   const postEvent = (
     <WebView
@@ -61,6 +60,7 @@ const EnrolledScreen = (props) => {
     <Container>
       {eventHappening ? eventNow : eventSoon}
       {event.online ? links : liveEventInfo}
+      {eventHappening ? survey : null}
       {event.finished ? postEvent : null}
     </Container>
   );
